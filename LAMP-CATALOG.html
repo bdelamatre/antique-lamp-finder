@@ -1,0 +1,672 @@
+<title>Lamp Catalog — Run 1</title>
+
+<style>
+  :root {
+    --ground:      #EAE4D8;
+    --ground-2:    #E1D9CA;
+    --card:        #F3EEE4;
+    --ink:         #1E1712;
+    --ink-2:       #4A4038;
+    --ink-3:       #7A6E61;
+    --rule:        #CDC2AE;
+    --rule-soft:   #DBD2C1;
+    --glow:        #A9702A;
+    --glow-bright: #C98A34;
+    --patina:      #4A6F63;
+    --rust:        #A24A32;
+    --shadow:      rgba(30, 23, 18, .10);
+
+    --serif: "Hoefler Text", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans:  ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --measure: 68ch;
+    --pad: clamp(1.25rem, 4vw, 3.25rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground:      #17120E;
+      --ground-2:    #100C09;
+      --card:        #211A14;
+      --ink:         #F0E7DA;
+      --ink-2:       #C4B6A4;
+      --ink-3:       #8A7C6C;
+      --rule:        #3B2F25;
+      --rule-soft:   #2C231B;
+      --glow:        #E0A24A;
+      --glow-bright: #F0BB6C;
+      --patina:      #7FA79A;
+      --rust:        #D07054;
+      --shadow:      rgba(0, 0, 0, .45);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #17120E;
+    --ground-2:    #100C09;
+    --card:        #211A14;
+    --ink:         #F0E7DA;
+    --ink-2:       #C4B6A4;
+    --ink-3:       #8A7C6C;
+    --rule:        #3B2F25;
+    --rule-soft:   #2C231B;
+    --glow:        #E0A24A;
+    --glow-bright: #F0BB6C;
+    --patina:      #7FA79A;
+    --rust:        #D07054;
+    --shadow:      rgba(0, 0, 0, .45);
+  }
+
+  :root[data-theme="light"] {
+    --ground:      #EAE4D8;
+    --ground-2:    #E1D9CA;
+    --card:        #F3EEE4;
+    --ink:         #1E1712;
+    --ink-2:       #4A4038;
+    --ink-3:       #7A6E61;
+    --rule:        #CDC2AE;
+    --rule-soft:   #DBD2C1;
+    --glow:        #A9702A;
+    --glow-bright: #C98A34;
+    --patina:      #4A6F63;
+    --rust:        #A24A32;
+    --shadow:      rgba(30, 23, 18, .10);
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 78rem;
+    margin: 0 auto;
+    padding: var(--pad);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .label {
+    font-family: var(--sans);
+    font-size: .69rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .num { font-variant-numeric: tabular-nums; }
+
+  a { color: inherit; text-decoration-color: var(--glow); text-underline-offset: 3px; }
+  a:hover { color: var(--glow); }
+  a:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 2px; }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1.75rem;
+  }
+  .masthead h1 {
+    font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+    line-height: 1.04;
+    font-weight: 400;
+    letter-spacing: -.015em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--glow);
+  }
+  .runbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.75rem;
+    align-items: baseline;
+  }
+
+  /* ---------- verdict ---------- */
+
+  .verdict {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--glow);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .verdict h2 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .verdict p {
+    margin: 0;
+    max-width: var(--measure);
+    color: var(--ink-2);
+  }
+  .verdict p + p { margin-top: .85rem; }
+  .verdict strong { color: var(--ink); font-weight: 600; }
+
+  .tally {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .tally div { display: flex; flex-direction: column; gap: .15rem; }
+  .tally .fig {
+    font-size: 1.9rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .tally .fig.on { color: var(--patina); }
+  .tally .fig.off { color: var(--rust); }
+
+  /* ---------- sections ---------- */
+
+  .sec { display: flex; flex-direction: column; gap: 1.5rem; }
+  .sec > header { display: flex; flex-direction: column; gap: .45rem; }
+  .sec > header h2 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .sec > header p {
+    margin: 0;
+    max-width: var(--measure);
+    color: var(--ink-2);
+    font-size: .95rem;
+  }
+
+  /* ---------- lot cards ---------- */
+
+  .lots { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .lot {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  @media (max-width: 40rem) {
+    .lot { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  }
+
+  .plate {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: .25rem;
+  }
+  .plate svg { width: 72px; height: 96px; display: block; }
+  .plate .stroke { stroke: var(--ink-3); fill: none; stroke-width: 1.4; }
+  .plate .shade  { fill: var(--glow); opacity: .16; stroke: var(--glow); stroke-width: 1.4; }
+
+  .lot-body { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+
+  .lot-head { display: flex; flex-direction: column; gap: .5rem; }
+  .lot-head h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+
+  .chip {
+    font-family: var(--sans);
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .28rem .6rem;
+    border: 1px solid var(--rule);
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  .chip.tier { border-color: var(--glow); color: var(--glow); }
+  .chip.scope { border-color: var(--patina); color: var(--patina); }
+  .chip.block { border-color: var(--rust); color: var(--rust); }
+
+  .rail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1rem 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .rail div { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
+  .rail .v { font-size: 1.02rem; font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .rail .v.muted { color: var(--ink-3); }
+
+  .note { margin: 0; color: var(--ink-2); font-size: .95rem; max-width: var(--measure); }
+  .note + .note { margin-top: .6rem; }
+
+  /* ---------- tables ---------- */
+
+  .scroll { overflow-x: auto; border: 1px solid var(--rule); background: var(--card); }
+  table { border-collapse: collapse; width: 100%; min-width: 40rem; }
+  caption { text-align: left; padding: 0 0 .75rem; color: var(--ink-3); font-size: .9rem; }
+  th, td {
+    text-align: left;
+    padding: .8rem 1rem;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+    font-size: .93rem;
+  }
+  thead th {
+    font-family: var(--sans);
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.when { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .flag { color: var(--rust); }
+  .ok { color: var(--patina); }
+
+  /* ---------- settings ---------- */
+
+  .settings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .settings div {
+    background: var(--card);
+    padding: 1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+  .settings .v { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+    color: var(--ink-3);
+    font-size: .88rem;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a { transition: color .15s ease; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="label">Antique Electric Lamp Acquisition · Run 1</span>
+    <h1>Nothing to bid on yet — <em>but the gate was the problem, not the market.</em></h1>
+    <div class="runbar">
+      <span class="label">27 July 2026</span>
+      <span class="label">Bedroom · maple dresser</span>
+      <span class="label">Amended after OV-1</span>
+    </div>
+  </header>
+
+  <section class="verdict">
+    <h2>Five listings verified live. Under the original gate, all five failed.</h2>
+    <p>
+      The binding constraint was never price or quality. It was the <strong>size gate</strong> — an
+      18&Prime; minimum height paired with a 10&Prime; minimum shade diameter, which together excluded
+      boudoir and desk lamps entirely. That is the affordable Tier&nbsp;A supply, and the form
+      historically built for a dresser.
+    </p>
+    <p>
+      The floors have been lowered (<strong>OV-1</strong>) and <strong>three of the five are back
+      in scope</strong>. They still cannot publish as buy candidates, because scoring requires a low
+      comp and the comp library is empty — eBay&rsquo;s sold-listing search is behind a login wall.
+      Publishing them anyway would mean inventing the denominator.
+    </p>
+    <p>
+      <strong>One blocker remains, and it is comps.</strong> Run&nbsp;2 leads with comp sourcing
+      before any new searching.
+    </p>
+    <div class="tally">
+      <div><span class="label">Verified live</span><span class="fig num">5</span></div>
+      <div><span class="label">Back in scope</span><span class="fig num on">3</span></div>
+      <div><span class="label">Publishable</span><span class="fig num off">0</span></div>
+      <div><span class="label">Held for report</span><span class="fig num">1</span></div>
+      <div><span class="label">Rejected</span><span class="fig num">9</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header>
+      <span class="label">Reinstated by OV-1</span>
+      <h2>In scope, blocked only on comps</h2>
+      <p>
+        Each cleared the amended size gate. All were active on 27 July; fixed-price listings move,
+        so re-verify at the top of run 2 before acting. Ordered best prospect first.
+      </p>
+    </header>
+
+    <div class="lots">
+
+      <article class="lot">
+        <div class="plate" aria-hidden="true">
+          <svg viewBox="0 0 72 96">
+            <path class="shade" d="M14 40 L58 40 L50 14 L22 14 Z"/>
+            <path class="stroke" d="M36 40 V74"/>
+            <path class="stroke" d="M22 82 h28 a4 4 0 0 0 -4 -8 h-20 a4 4 0 0 0 -4 8 Z"/>
+          </svg>
+        </div>
+        <div class="lot-body">
+          <div class="lot-head">
+            <h3>Handel reverse-painted floral boudoir lamp, c.&thinsp;1900–19</h3>
+            <div class="chips">
+              <span class="chip tier">Tier A</span>
+              <span class="chip scope">In scope</span>
+              <span class="chip block">No comps</span>
+              <span class="chip">Springfield, MA</span>
+            </div>
+          </div>
+          <div class="rail">
+            <div><span class="label">Ask</span><span class="v">$1,200 <span class="muted">BIN / OBO</span></span></div>
+            <div><span class="label">Height</span><span class="v">14&Prime;</span></div>
+            <div><span class="label">Shade dia.</span><span class="v muted">Not stated</span></div>
+            <div><span class="label">Value score</span><span class="v muted">— no comps</span></div>
+          </div>
+          <p class="note">
+            <strong>Best prospect of the run.</strong> A Tier&nbsp;A maker at just over half the
+            working budget, close enough to consider collecting in person — which removes the
+            $100–400 art-glass packing load and the breakage risk that comes with it. Seller has
+            traded on the platform since 2000 at 100%.
+          </p>
+          <p class="note">
+            Clears the 14&Prime; single-lamp floor exactly. Reverse-painted decoration must be
+            confirmed on the <em>interior</em> surface; exterior painting is a reproduction tell.
+            <a href="https://www.ebay.com/itm/287463888686">View listing &rarr;</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="lot">
+        <div class="plate" aria-hidden="true">
+          <svg viewBox="0 0 72 96">
+            <path class="shade" d="M12 34 L52 22 L58 40 L18 52 Z"/>
+            <path class="stroke" d="M40 44 L40 72"/>
+            <path class="stroke" d="M26 78 h28"/>
+            <path class="stroke" d="M40 72 v6"/>
+          </svg>
+        </div>
+        <div class="lot-body">
+          <div class="lot-head">
+            <h3>Handel Art Deco &ldquo;Sunset Palm&rdquo; six-panel desk lamp</h3>
+            <div class="chips">
+              <span class="chip tier">Tier A</span>
+              <span class="chip scope">In scope</span>
+              <span class="chip block">No comps</span>
+              <span class="chip">Toledo, OH</span>
+            </div>
+          </div>
+          <div class="rail">
+            <div><span class="label">Ask</span><span class="v">$2,600 <span class="muted">BIN</span></span></div>
+            <div><span class="label">Height</span><span class="v">14–15.5&Prime;</span></div>
+            <div><span class="label">Shade</span><span class="v">8.25&Prime; &times; 4&Prime;</span></div>
+            <div><span class="label">Value score</span><span class="v muted">— no comps</span></div>
+          </div>
+          <p class="note">
+            Clears both amended floors. Dimensions come from two independent auction records for the
+            form, not from the listing, which omits them — so measurements need confirming directly
+            with the seller before any offer.
+          </p>
+          <p class="note">
+            Sits at the top of the working budget <em>before</em> fees, and it is out of region, so
+            shipping applies on top. Established dealer, 9.1k sales.
+            <a href="https://www.ebay.com/itm/198406925652">View listing &rarr;</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="lot">
+        <div class="plate" aria-hidden="true">
+          <svg viewBox="0 0 72 96">
+            <path class="shade" d="M16 42 a20 14 0 0 1 40 0 Z"/>
+            <path class="stroke" d="M36 42 V70"/>
+            <path class="stroke" d="M28 70 q8 6 16 0"/>
+            <path class="stroke" d="M24 82 h24 a3 3 0 0 0 -3 -8 h-18 a3 3 0 0 0 -3 8 Z"/>
+          </svg>
+        </div>
+        <div class="lot-body">
+          <div class="lot-head">
+            <h3>Daum Nancy green glass table lamp, marked</h3>
+            <div class="chips">
+              <span class="chip tier">Tier D</span>
+              <span class="chip scope">In scope</span>
+              <span class="chip block">Unverified</span>
+            </div>
+          </div>
+          <div class="rail">
+            <div><span class="label">Ask</span><span class="v">$2,900</span></div>
+            <div><span class="label">Height</span><span class="v">14&Prime;</span></div>
+            <div><span class="label">Shade dia.</span><span class="v">8&Prime;</span></div>
+            <div><span class="label">Value score</span><span class="v muted">— no comps</span></div>
+          </div>
+          <p class="note">
+            Tier&nbsp;D is the highest-weight lane in the brief. This one was rejected on its title
+            alone under the old gate and <strong>was never fetched</strong> — so it is a lead, not a
+            verified lot, and counts as nothing until the live page is read in full.
+          </p>
+          <p class="note">
+            Dimensions above are taken from the listing title and need confirming on the page.
+            <a href="https://www.ebay.com/itm/147344358752">View listing &rarr;</a>
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <header>
+      <span class="label">Held, not discarded</span>
+      <h2>Condition report requested</h2>
+      <p>Photos too poor to judge. Bad photos are where value hides, so these are held rather than thrown away.</p>
+    </header>
+    <article class="lot">
+      <div class="plate" aria-hidden="true">
+        <svg viewBox="0 0 72 96">
+          <path class="shade" d="M18 44 a18 12 0 0 1 36 0 Z"/>
+          <path class="stroke" d="M30 44 V72 M42 44 V72"/>
+          <path class="stroke" d="M24 80 h24 a4 4 0 0 0 -4 -8 h-16 a4 4 0 0 0 -4 8 Z"/>
+        </svg>
+      </div>
+      <div class="lot-body">
+        <div class="lot-head">
+          <h3>&ldquo;Rare 1900s Roycroft hammered copper table lamp, twin stem&rdquo;</h3>
+          <div class="chips">
+            <span class="chip tier">Tier C</span>
+            <span class="chip">$800 BIN / OBO</span>
+            <span class="chip">El Segundo, CA</span>
+          </div>
+        </div>
+        <p class="note">
+          Listed as an original Roycroft rather than &ldquo;style&rdquo;, so it passes the keyword
+          filter — but the page gives <strong>no dimensions, no orb-and-cross mark, and nothing at
+          all about the shade</strong>. The era field says 1920s while the title says 1900s. At $800
+          it would be far under a genuine example, which cuts both ways.
+        </p>
+        <p class="note">
+          <strong>Ask the seller for:</strong> overall height and shade diameter; a close photograph
+          of the base underside and rim showing any mark; confirmation the shade is present and
+          original; and the packing plan — $16.65 ground shipping on a claimed rare Roycroft is
+          itself a warning sign.
+          <a href="https://www.ebay.com/itm/188411049658">View listing &rarr;</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <section class="sec">
+    <header>
+      <span class="label">Catalogs not yet posted</span>
+      <h2>Watchlist</h2>
+    </header>
+    <div class="scroll">
+      <table>
+        <caption>Sales worth tracking, with the date to look again.</caption>
+        <thead>
+          <tr><th scope="col">House</th><th scope="col">Sale</th><th scope="col">Date</th><th scope="col">Standing</th><th scope="col">Check back</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Woody Auction<br><span class="label">Douglass, KS</span></td>
+            <td>Art Glass</td>
+            <td class="when">22 Aug 2026</td>
+            <td>Confirmed on the house site; catalog not yet posted. Premium unpublished — call (316) 747-2694.</td>
+            <td class="when">1 Aug</td>
+          </tr>
+          <tr>
+            <td>Thomaston Place<br><span class="label">Thomaston, ME</span></td>
+            <td>Summer Grandeur</td>
+            <td class="when">28–30 Aug 2026</td>
+            <td><span class="flag">Sources disagree.</span> House calendar says the catalog is posted; two aggregators report no upcoming sales at all. Top geographic priority — worth resolving by phone, (207) 354-8141.</td>
+            <td class="when">3 Aug</td>
+          </tr>
+          <tr>
+            <td>Woody Auction</td>
+            <td>Art Glass</td>
+            <td class="when">17 Oct 2026</td>
+            <td>Confirmed, catalog not posted.</td>
+            <td class="when">20 Sep</td>
+          </tr>
+          <tr>
+            <td>Thomaston Place</td>
+            <td>Autumn Majestic</td>
+            <td class="when">13–15 Nov 2026</td>
+            <td>Catalog not posted.</td>
+            <td class="when">15 Oct</td>
+          </tr>
+          <tr>
+            <td>Fontaine&rsquo;s<br><span class="label">Pittsfield, MA</span></td>
+            <td>—</td>
+            <td class="when">—</td>
+            <td><span class="flag">Site blocks access.</span> Probably the richest Tier&nbsp;A source in range — its June sale carried 200+ Tiffany lots and a Handel &ldquo;Poppy&rdquo; — and it is currently invisible to this routine. Try the Invaluable house page instead.</td>
+            <td class="when">Run 2</td>
+          </tr>
+          <tr>
+            <td>Bruneau &amp; Co.<br><span class="label">Cranston, RI</span></td>
+            <td>—</td>
+            <td class="when">—</td>
+            <td>No upcoming sales listed anywhere this run.</td>
+            <td class="when">Run 3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header>
+      <span class="label">Rejected this run</span>
+      <h2>What was turned down, and why</h2>
+    </header>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">Item</th><th scope="col">Ask</th><th scope="col">Reason</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Muller Frères Lunéville, cloud glass shade<br><span class="label">Kaunas, Lithuania</span></td>
+            <td class="when">$3,250</td>
+            <td><strong>Authenticity.</strong> $3,250 of art glass offered with $16.99 economy international shipping — nobody insures and professionally packs real cameo glass at that price. No dimensions, no signature photograph, thumbnails only. Compounded by the known 1980s <em>Muller Fres</em> reproductions, which copy the correct signature style with different letterforms.</td>
+          </tr>
+          <tr>
+            <td>Heintz copper desk lamp, Silvercrest</td>
+            <td class="when">$699</td>
+            <td><strong>Size — still fails under OV-1.</strong> At 11&Prime; it is an inch under even the 12&Prime; pair floor. This is the case the gate is correctly catching.</td>
+          </tr>
+          <tr>
+            <td>Gallé cameo glass table lamps &times;2</td>
+            <td class="when">$169 · $400</td>
+            <td>Two orders of magnitude below any genuine Gallé. Reproductions.</td>
+          </tr>
+          <tr>
+            <td>Edgar Brandt school floor lamp, Daum shade</td>
+            <td class="when">$3,500</td>
+            <td>Floor lamp — outside the brief.</td>
+          </tr>
+          <tr>
+            <td>&ldquo;Dirk van Erp <em>style</em>&rdquo; copper &amp; mica &times;5</td>
+            <td class="when">$350–750</td>
+            <td>&ldquo;Style&rdquo; is a reproduction marker and is negative-keyworded.</td>
+          </tr>
+          <tr>
+            <td>Mica Lamp Company &times;5</td>
+            <td class="when">$399–1,795</td>
+            <td>Modern maker, founded in the 1970s–80s. Post-1945.</td>
+          </tr>
+          <tr>
+            <td>&ldquo;Reverse-painted scenic shade <em>with Handel base</em>&rdquo;</td>
+            <td class="when">$750</td>
+            <td>The title concedes the marriage — a shade of unstated make wed to a Handel base.</td>
+          </tr>
+          <tr>
+            <td>&ldquo;Handel mission slag / reverse-painted&rdquo;</td>
+            <td class="when">$350</td>
+            <td>Price incoherent for a genuine Handel, and the title conflates slag and reverse-painted, which are different constructions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header>
+      <span class="label">In force</span>
+      <h2>Settings this run</h2>
+    </header>
+    <div class="settings">
+      <div><span class="label">Working budget</span><span class="v">$2,000</span></div>
+      <div><span class="label">Stretch ceiling</span><span class="v">$5,500</span></div>
+      <div><span class="label">Walk away</span><span class="v">$6,500</span></div>
+      <div><span class="label">Excellent value</span><span class="v">Score &ge; 1.54</span></div>
+      <div><span class="label">Act now</span><span class="v">Score &ge; 2.2</span></div>
+      <div><span class="label">Single lamp <span class="ok">OV-1</span></span><span class="v">14–28&Prime; · shade 8–18&Prime;</span></div>
+      <div><span class="label">Pair, each <span class="ok">OV-1</span></span><span class="v">12–28&Prime; · shade 6–18&Prime;</span></div>
+      <div><span class="label">Priority</span><span class="v">New England first</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Thumbnails are drawn silhouettes indicating lamp form, not photographs of the lots. Every listing above was read on its live page; nothing enters this catalog from a search snippet.</p>
+    <p>Buy candidates are rebuilt every run from live-verified data. Sold prices are valuation evidence only and never appear as candidates.</p>
+    <p>Run 1 · verified live 27 July 2026 · amended the same day under OV-1.</p>
+  </footer>
+
+</div>
