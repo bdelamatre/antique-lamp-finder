@@ -18,6 +18,11 @@ routine text they name**. Currently in force:
   18"/10" floors excluded boudoir and desk lamps, which is the affordable Tier A supply and
   the historically correct form for a dresser.
 
+### Catalogs go in the repo, never to hosted artifacts
+Per the repository owner (2026-07-27): the HTML catalog view is **committed to this repository**
+as `LAMP-CATALOG.html`. Do not publish it as a hosted artifact. It must stay a self-contained
+single file so it renders straight from the repo.
+
 ### Always merge to `main` at the end of a run
 Per the repository owner (2026-07-27): work is developed on the run's designated
 `claude/*` branch, then **merged into `main` and pushed** as part of the same run. Do not
