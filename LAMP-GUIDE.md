@@ -3,7 +3,41 @@
 Persistent expertise for the Antique Electric Lamp Acquisition routine.
 **Amend, never rewrite.** Read first every run.
 
-**Version:** 1.0 · **Last run:** 2026-07-27
+**Version:** 1.1 · **Last run:** 2026-07-27
+
+---
+
+## 0. Active overrides to the routine spec
+
+The routine prompt is stored in the scheduler and cannot be edited from a run. Owner-approved
+amendments are recorded here instead. **These supersede the routine text they name.** Apply
+them every run.
+
+### OV-1 — Size gate, replaces §1 "Size gate" (approved 2026-07-27)
+
+Run 1 established that the original 18" floor excluded the exact categories the tier table
+calls the realistic entry (LAMP-GUIDE §6 L1). Replacement gate:
+
+| | Overall height | Shade diameter |
+|---|---|---|
+| **Single lamp** | **14–28"** | **8–18"** |
+| **Pair** (each lamp) | **12–28"** | **6–18"** |
+
+- Shade over **20"** remains disqualifying in all cases (unchanged).
+- Upper bound of 28" unchanged — above that still overpowers a dresser.
+- Palette guidance unchanged: amber, gold, caramel, green, copper. Cold blue-white and stark
+  black-and-white still read wrong against warm honey maple.
+- **A pair at the working budget still beats a single at the stretch ceiling.**
+
+**Why both floors moved.** The height floor is the obvious one, but the shade floor was doing
+equal damage silently: the original gate demanded 10–18" shades while boudoir and desk shades
+run **6–10"** (the verified Handel "Sunset Palm" shade was 8.25" × 4"). Lowering height alone
+would have left the category excluded via the shade dimension. Both floors had to move
+together for the change to have any effect.
+
+**What this admits that v1 banned:** boudoir lamps (12–16"), Handel and Tiffany desk lamps
+(14–16"), damascene forms — i.e. the affordable Tier A supply. **What stays excluded:**
+genuine accessory-scale pieces under 12", such as the 11" Heintz desk lamp rejected in run 1.
 
 ---
 
@@ -160,9 +194,13 @@ Only **table lamps** (20–26") clear the 18" floor, and those are the $2.5–6k
 stretch ceiling, not the working budget. As written, the routine can only ever buy at the top
 of its range.
 
-**Needs a user decision.** Options: lower the floor to ~13" (admits boudoir/desk, which suits
-a dresser anyway); keep 18" and accept the routine is a stretch-ceiling-only table-lamp hunt;
-or split the gate — 13" floor for a *pair*, 18" for a single.
+**RESOLVED 2026-07-27** — owner approved lowering the floor. See **§0 OV-1** for the gate now
+in force: single 14–28" / shade 8–18"; pair 12–28" / shade 6–18". Three options were offered
+(lower to ~13", keep 18", or split by single-vs-pair); the owner delegated the choice and the
+most permissive was taken, on the reasoning that 18" was an estimate while run 1 produced
+actual measurements, and that boudoir lamps are by definition dresser lamps. Implementing it
+surfaced a second defect in the original gate — the 10" **shade** floor excluded the same
+category independently — so both floors moved. Reverting means editing §0 OV-1 only.
 
 **L2. Shipping cost is an authenticity signal.** ⭐ *Added to §2 as red flag #7.*
 A Muller Frères lamp asking **$3,250** offered from **Kaunas, Lithuania** with **$16.99
@@ -193,6 +231,12 @@ an estimate is a house's marketing position, not a realized sale.
 
 ## 7. Changelog
 
+- **v1.1 — 2026-07-27** — **§0 Active overrides added.** OV-1 replaces the routine's §1 size
+  gate: single 14–28" / shade 8–18", pair 12–28" / shade 6–18", 20" shade cap retained.
+  Owner-approved resolution of L1. Both the height floor *and* the previously unnoticed 10"
+  shade-diameter floor were lowered — the latter excluded boudoir and desk forms
+  independently, so moving height alone would have had no effect. Three run-1 rejections are
+  reinstated as in-scope pending comps (see LAMP-CATALOG).
 - **v1.0 — 2026-07-27** — Guide created (run 1). Maker profiles: Handel, Muller Frères,
   Tiffany, van Erp, Roycroft. Red flags 1–8 established, #7 (shipping-cost tell) new this run.
   Channel directory rated across 9 channels. Search strings recorded. Comp library opened but

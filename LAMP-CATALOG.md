@@ -3,25 +3,43 @@
 Buy candidates. **Rebuilt every run from live-verified data.**
 
 **Run:** 1 · **Date:** 2026-07-27 · **Prior catalog:** none (first run)
+**Amended 2026-07-27** after owner approved the OV-1 size gate (LAMP-GUIDE §0).
 
 ---
 
 ## Buy candidates
 
-**None. Zero rows publish this run.**
+**None. Zero rows publish this run** — but for one remaining reason, not two.
 
-Five listings were fetched and verified live. All five failed a hard gate. Details in
-*Rejected this run* below. No purchase is a valid run outcome (§9).
+Five listings were fetched and verified live. Under the original gate all five failed. Under
+**OV-1** (LAMP-GUIDE §0, approved after this run), **three are reinstated as in-scope** and
+appear below.
 
-The binding constraint was not price and not quality — it was the **§1 size gate**, which
-eliminated three of the five on overall height while they sat comfortably inside the working
-budget. That gate appears to conflict with the tier table's own guidance and is escalated to
-you above the fold; see `LAMP-GUIDE` §6 L1.
+They still cannot publish, because **§5 requires a value score and the comp library is empty.**
+Value score = low comp ÷ landed cost; run 1 could not source a single set of three dated
+realized sales, since eBay's sold-listing search redirects to a login wall. Publishing them
+without comps would mean inventing the denominator, which §5 forbids.
 
-A second structural blocker: **no candidate could have been scored even if it had cleared the
-size gate**, because the comp library is empty. Value score = low comp ÷ landed cost, and
-run 1 could not source a single set of three dated realized sales — eBay's sold-listing search
-redirects to a login wall. Fixing comp sourcing is run 2's first priority.
+So the size gate is fixed and the comp blocker is now the sole thing standing between this
+routine and a scored candidate list. **Comp sourcing is run 2's first action** — before any
+new searching.
+
+---
+
+## Reinstated by OV-1 — in scope, blocked only on comps
+
+These cleared the amended size gate. **Verify still-live at the top of run 2** (all were
+active 2026-07-27; fixed-price listings move), then score as soon as comps exist. Listed
+best-prospect first.
+
+| Lamp | Tier | Ask | Channel | Size vs OV-1 | Standing |
+|---|---|---|---|---|---|
+| **Handel** reverse-painted floral **boudoir** lamp, A&C, c.1900–19 | A | **$1,200** BIN/OBO | eBay · **Springfield, MA** · [287463888686](https://www.ebay.com/itm/287463888686) | 14" H — clears 14" single floor **exactly**. Shade dia. not stated. | **Best prospect of run 1.** Tier A maker, half the working budget, Massachusetts — plausible pickup, avoiding the $100–400 glass-shipping load and the risk with it. Seller on eBay since 2000, 100%. |
+| **Handel** Art Deco "Sunset Palm" six-panel **desk** lamp | A | $2,600 BIN | eBay · Toledo, OH · [198406925652](https://www.ebay.com/itm/198406925652) | 14–15.5" H (per two auction records), shade 8.25" — clears both floors. | In scope but at the top of the working budget before fees, and out-of-region so shipping applies. Needs comps badly before any offer. |
+| **Daum Nancy** green glass table lamp, marked | D | $2,900 | eBay · [147344358752](https://www.ebay.com/itm/147344358752) | 14" × 8" per title — clears both floors. | Tier D is the highest-weight lane. **Never fetched** — rejected on title alone under the old gate. Must be fetched and verified before it counts as anything (§4). |
+
+**Action needed, run 2:** re-verify all three are live → fetch the Daum listing properly →
+request shade diameter + underside/rim photos on the Handel boudoir → source comps → score.
 
 ---
 
@@ -70,13 +88,12 @@ Jeffrey S. Evans, Rago.
 
 ### Verified live, then rejected
 
+*Three size-gate rejections were reinstated by OV-1 and moved to the section above.*
+
 | Item | Ask | Channel | Verdict |
 |---|---|---|---|
-| Antique **Handel** Reverse Painted Floral Boudoir Lamp, A&C | $1,200 BIN/OBO | eBay · Springfield, MA · [287463888686](https://www.ebay.com/itm/287463888686) | ❌ **Size gate.** Overall height **14"** — 4" under the 18" floor. Otherwise a legitimately interesting lot: Tier A maker, in-budget, Massachusetts pickup range, seller since 2000 at 100%. Killed on height alone. |
-| **Handel** Art Deco "Sunset Palm" Six Panel Desk Lamp | $2,600 BIN | eBay · Toledo, OH · [198406925652](https://www.ebay.com/itm/198406925652) | ❌ **Size gate.** Listing omits dimensions, but Handel Sunset Palm desk lamps measure **14–15.5" high** across two independent auction records (Clars: 14"h; another: 15.5"h). Below the floor. Established dealer, 9.1K sales — would have been worth a condition report otherwise. |
-| Antique **Heintz** A&C Copper Desk Lamp, Mission Bell Top, Silvercrest | $699 BIN/OBO | eBay · Swedesboro, NJ · [318560724187](https://www.ebay.com/itm/318560724187) | ❌ **Size gate.** Stated **11" H** — 7" under the floor. |
+| Antique **Heintz** A&C Copper Desk Lamp, Mission Bell Top, Silvercrest | $699 BIN/OBO | eBay · Swedesboro, NJ · [318560724187](https://www.ebay.com/itm/318560724187) | ❌ **Size gate — still fails under OV-1.** Stated **11" H**, a full inch under even the 12" pair floor. This is the case the gate is correctly catching: genuine accessory scale. |
 | **Muller Frères** Lunéville A/N Lamp, Cloud Glass Shade | $3,250 BIN/OBO | eBay · Kaunas, Lithuania · [287392282000](https://www.ebay.com/itm/287392282000) | ❌ **Authenticity.** $3,250 art glass offered with **$16.99 economy international shipping** — incoherent (§2 red flag #7). No dimensions, no signature photograph, no marriage disclosure, thumbnails only. Compounded by the known 1980s `Muller Fres` signature-graphism reproductions (LAMP-GUIDE §1). Rejected without needing the signature. |
-| **Daum Nancy** Green Glass Table Lamp, marked | $2,900 | eBay · [147344358752](https://www.ebay.com/itm/147344358752) | ❌ **Size gate**, per listing title `14"x8"` — 14" overall. Not fetched, since the title alone disqualifies. |
 
 ### Rejected at search level (not fetched — disqualifying on face)
 
@@ -104,7 +121,10 @@ verification, which §4 makes non-negotiable. Carried forward above.
 
 **Tool calls used:** ~28 of the 25–35 budget.
 
-**Two decisions needed from you before run 2 can produce candidates:**
-1. **The 18" size floor** — keep, lower, or split for pairs (LAMP-GUIDE §6 L1).
-2. **Comp sourcing** — eBay sold is login-walled. Approve trying LiveAuctioneers price-guide
-   pages and Worthpoint, or supply an alternative.
+**Decisions:**
+1. ~~The 18" size floor~~ — ✅ **Resolved 2026-07-27.** Owner approved lowering it; see
+   LAMP-GUIDE §0 OV-1. Three rejections reinstated.
+2. **Comp sourcing** — ⏳ **Still open, and now the sole blocker.** eBay sold is login-walled.
+   Approve trying LiveAuctioneers price-guide pages and Worthpoint, or supply an alternative.
+   Run 2 will attempt LiveAuctioneers and Worthpoint by default unless told otherwise, since
+   nothing can be scored without them.

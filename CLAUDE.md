@@ -8,6 +8,16 @@ schedule. Two artifacts live here:
 
 ## Standing instructions
 
+### The routine spec is not the whole spec — read `LAMP-GUIDE.md` §0 first
+The routine prompt lives in the scheduler and cannot be edited from inside a run. Owner-approved
+amendments to it are recorded in **`LAMP-GUIDE.md` §0 "Active overrides"** and **supersede the
+routine text they name**. Currently in force:
+
+- **OV-1 (2026-07-27)** — replaces the §1 size gate. Single lamp **14–28"** high, shade
+  **8–18"**; pair **12–28"** each, shade **6–18"** each; 20" shade cap retained. The original
+  18"/10" floors excluded boudoir and desk lamps, which is the affordable Tier A supply and
+  the historically correct form for a dresser.
+
 ### Always merge to `main` at the end of a run
 Per the repository owner (2026-07-27): work is developed on the run's designated
 `claude/*` branch, then **merged into `main` and pushed** as part of the same run. Do not
