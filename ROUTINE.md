@@ -1,6 +1,6 @@
 # Routine: Antique Electric Lamp Acquisition
 
-**Version 1.2** — revised from run 1 (2026-07-27). Supersedes v1.1.
+**Version 1.3** — revised from run 1 (2026-07-27). Supersedes v1.2.
 **Cadence:** Weekly. Auction catalogs post 2–4 weeks ahead.
 
 ---
@@ -132,6 +132,13 @@ not candidate-building — catalogs for the next 30 days are usually unposted.
 
 **6. Aggregator sweep.** LiveAuctioneers, Invaluable, HiBid, Bidsquare, AuctionZip, Proxibid.
 Upcoming only. Record sale start date and lot close time.
+
+**6b. Vet the house.** *(New in v1.3.)* Before quoting a max bid on any auction lot, research the
+selling house: published buyer reviews, BBB record, complaint boards. Record the verdict in the
+guide's auctioneer directory and re-check before bidding — reputations move. Houses rated **do not
+bid** are disqualifying regardless of how good the lot looks. The common failure modes are *not*
+counterfeits: they are shipping charged at multiples of cost, condition withheld, and sales not
+honoured after the hammer.
 
 **7. Verify, score, publish** (§4, §5, §9). Rebuild both the markdown and the HTML.
 

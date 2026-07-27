@@ -1,4 +1,4 @@
-<title>Lamp Guide — v1.2</title>
+<title>Lamp Guide — v1.3</title>
 
 <style>
   :root {
@@ -72,6 +72,24 @@
   .q{display:flex;flex-direction:column;gap:.3rem;}
   .q code{display:block;background:var(--card-2);padding:.6rem .75rem;overflow-x:auto;white-space:pre;font-size:.78rem;line-height:1.6;}
 
+  .houses{display:flex;flex-direction:column;gap:1rem;}
+  .house{background:var(--card);border:1px solid var(--rule);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;box-shadow:0 1px 2px var(--shadow);}
+  .house.trust{border-left:3px solid var(--patina);}
+  .house.caution{border-left:3px solid var(--amber);}
+  .house.avoid{border-left:3px solid var(--rust);}
+  .house-head{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:baseline;justify-content:space-between;}
+  .house-head h3{margin:0;font-size:1.15rem;font-weight:400;}
+  .house-head .where{font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);}
+  .verdict-chip{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .65rem;border:1px solid;white-space:nowrap;}
+  .verdict-chip.trust{border-color:var(--patina);color:var(--patina);}
+  .verdict-chip.caution{border-color:var(--amber);color:var(--amber);}
+  .verdict-chip.avoid{border-color:var(--rust);color:var(--rust);}
+  .house .score{font-family:var(--sans);font-size:.78rem;color:var(--ink-3);font-variant-numeric:tabular-nums;}
+  .house p{margin:0;color:var(--ink-2);font-size:.94rem;max-width:var(--measure);}
+  .house .con{color:var(--rust);} .house .pro{color:var(--patina);}
+  .house ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem;color:var(--ink-2);font-size:.94rem;}
+  .house ul li::marker{color:var(--glow);}
+
   .lesson{background:var(--card);border:1px solid var(--rule);padding:1.35rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;box-shadow:0 1px 2px var(--shadow);}
   .lesson h3{margin:0;font-size:1.12rem;font-weight:400;line-height:1.3;text-wrap:balance;}
   .lesson h3 .tag{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--glow);margin-right:.55rem;}
@@ -93,7 +111,7 @@
       the first section win.
     </p>
     <div class="runbar">
-      <span class="label">Version 1.2</span>
+      <span class="label">Version 1.3</span>
       <span class="label">Last run 27 July 2026</span>
     </div>
   </header>
@@ -224,6 +242,7 @@
       <div class="flag-row new"><span class="n">10</span><p><strong>Era language standing in for attribution.</strong> &ldquo;Handel era,&rdquo; &ldquo;Handel period.&rdquo; Names a decade, not a maker.</p></div>
       <div class="flag-row new"><span class="n">11</span><p><strong>An estimate range so wide it carries no information</strong> — $100–$10,000, $1–$1,000. The house is declining to value the lot. Treat as unvalued.</p></div>
       <div class="flag-row"><span class="n">12</span><p><strong>Silence in a condition report is a question, not a green light.</strong> Reputable houses disclose restoration.</p></div>
+      <div class="flag-row new"><span class="n">13</span><p><strong>Hyper-precise estimates at a multiple of market</strong> — $32,175–$41,827, $13,702–$17,812, $21,307–$27,699. Real estimates are round, because they are judgements. Figures carrying four significant digits have been generated, most likely converted from another currency or produced algorithmically. In run 1 <em>every</em> such estimate came from one of the two houses rated <strong>do not bid</strong> in §4. Treat the pattern as a signal about the seller, not the lot.</p></div>
     </div>
   </section>
 
@@ -261,10 +280,219 @@
     </div>
   </section>
 
-  <!-- ============ SEARCHES ============ -->
+  <!-- ============ AUCTIONEERS ============ -->
   <section class="sec">
     <header>
       <span class="label">Section 4</span>
+      <h2>Auctioneer diligence</h2>
+      <p>
+        Every lot is bought as-is, final, no returns. The house&rsquo;s honesty <em>is</em> the
+        protection, so who is selling matters as much as what is sold. Ratings below come from
+        published buyer reviews, BBB records and complaint boards, checked 27 July 2026.
+        <strong>Re-check any house before bidding</strong> — reputations move.
+      </p>
+    </header>
+
+    <div class="houses">
+
+      <article class="house avoid">
+        <div class="house-head">
+          <h3>Bidhaus <span class="where">New York, NY</span></h3>
+          <span class="verdict-chip avoid">Do not bid</span>
+        </div>
+        <p class="score">~869 platform reviews · BBB complaints on file · not accredited</p>
+        <ul>
+          <li><span class="con">Cancels winning bids after the hammer</span>, invoking a terms clause covering lots &ldquo;sold in error by our Auctioneer.&rdquo; Buyers report hundreds of successful bids voided after close.</li>
+          <li><span class="con">Bait-and-switch reported:</span> a lot photographed and sold, then the buyer is told it is unavailable and offered &ldquo;something of equal value.&rdquo;</li>
+          <li><span class="con">BBB complaints allege fabricated bidding</span> and that the business &ldquo;scams people out of money.&rdquo;</li>
+          <li>Misrepresentation — a modern John-Richard bench sold as antique, needing undisclosed restoration, available new for less.</li>
+          <li>Poor packing; one item shipped in a paper grocery bag. Support unresponsive.</li>
+        </ul>
+        <p>
+          <strong>Three Bidhaus lots surfaced in run 1</strong> and all were rejected on other
+          grounds before this research was done. That was luck, not process. Treat the house as
+          disqualifying regardless of the lot.
+        </p>
+      </article>
+
+      <article class="house avoid">
+        <div class="house-head">
+          <h3>Mynt Auctions <span class="where">New York, NY</span></h3>
+          <span class="verdict-chip avoid">Do not bid</span>
+        </div>
+        <p class="score">~902 platform reviews · BBB complaints on file</p>
+        <ul>
+          <li><span class="con">Authenticity guarantee not honored.</span> A BBB complaint describes a counterfeit Ferragamo where the buyer invoked the guarantee, supplied verification contacts, and was refused a return.</li>
+          <li><span class="con">Reported using AI to &ldquo;prove&rdquo; authentication</span> in a dispute over a Louis Vuitton bag that smelled of glue and appeared newly made despite the model being discontinued.</li>
+          <li>False advertising on stated sizes; months-long waits between sale and delivery; difficulty getting any response.</li>
+        </ul>
+        <p>
+          <strong>Disqualifying for this brief specifically.</strong> Everything here turns on a
+          signature, a mark, or a shade being original to its base. A house that will not stand
+          behind an authenticity guarantee cannot be bought from when authenticity is the entire
+          proposition.
+        </p>
+      </article>
+
+      <article class="house trust">
+        <div class="house-head">
+          <h3>Woody Auction <span class="where">Douglass, KS</span></h3>
+          <span class="verdict-chip trust">Trusted</span>
+        </div>
+        <p class="score">4.9 / 5 · 2,861 reviews · third generation, trading since 1945</p>
+        <ul>
+          <li><span class="pro">The strongest reputation in this set.</span> Specialists in exactly the right material — American Brilliant cut glass, art glass, lamps.</li>
+          <li>Descriptions complete and matched to photographs; buyers specifically praise ethics and accuracy.</li>
+          <li><span class="pro">In-house shipping is a stated strength</span> — items arrive intact even when boxes are mishandled. Rare among houses; most of the complaints in this section are shipping complaints.</li>
+          <li><strong>Bid direct.</strong> 15% premium on their own platform versus 20% + 3.99% through LiveAuctioneers, and 0% in person.</li>
+        </ul>
+      </article>
+
+      <article class="house trust">
+        <div class="house-head">
+          <h3>Toomey &amp; Co. <span class="where">Chicago, IL</span></h3>
+          <span class="verdict-chip trust">Trusted · comp source</span>
+        </div>
+        <p class="score">~408 platform reviews · trading since 1987 · merged into Rago/Wright 2022</p>
+        <ul>
+          <li><span class="pro">Condition reports are accurate and unhedged</span> — buyers note they commit to condition where most houses equivocate. That is the single most valuable trait in a house for this brief.</li>
+          <li>Buyers reporting unbroken satisfaction across decades of transactions.</li>
+          <li>Publishes realized prices openly with dates and estimates — the basis of this guide&rsquo;s comp library.</li>
+        </ul>
+      </article>
+
+      <article class="house trust">
+        <div class="house-head">
+          <h3>Rago <span class="where">Lambertville, NJ</span></h3>
+          <span class="verdict-chip trust">Trusted · comp source</span>
+        </div>
+        <p class="score">Rago/Wright group · recognized authority in 20th-century decorative arts</p>
+        <ul>
+          <li>David Rago is a leading authority on early 20th-century American ceramics and design; the house is a reference point for the period this brief covers.</li>
+          <li>Open realized prices with dates. Paired with Toomey as the standing comp source.</li>
+        </ul>
+      </article>
+
+      <article class="house trust">
+        <div class="house-head">
+          <h3>Andrew Jones Auctions <span class="where">Los Angeles, CA</span></h3>
+          <span class="verdict-chip trust">Trusted</span>
+        </div>
+        <p class="score">~232 platform reviews · predominantly positive</p>
+        <ul>
+          <li><span class="pro">Corroborated by their own catalogue.</span> Three of their lamp lots in run 1 said &ldquo;on associated base&rdquo; or &ldquo;on later associated base&rdquo; — disclosing marriages that many houses bury. Those lots were rejected, but the disclosure is a mark of integrity.</li>
+          <li>Items described accurately; staff responsive; showroom well kept for previewing.</li>
+          <li><span class="con">Shipping charges repeatedly called excessive.</span> No packing materials provided at pickup — bring your own.</li>
+        </ul>
+      </article>
+
+      <article class="house caution">
+        <div class="house-head">
+          <h3>Americana Auctions <span class="where">Rehoboth, MA</span></h3>
+          <span class="verdict-chip caution">Good, with caution</span>
+        </div>
+        <p class="score">4.6 / 5 · 193 reviews · 40 years trading · <strong>holds the run-1 scored lot</strong></p>
+        <ul>
+          <li>Predominantly positive: responsive, accurate descriptions, good packing, repeat buyers.</li>
+          <li><span class="con">One integrity complaint worth knowing before bidding.</span> A buyer reported a completed purchase being withdrawn after another buyer offered more money, alongside a credit-card overcharge. Single report, dated April 2020, against a large base of good reviews — but it is the specific failure that would matter most if it recurred.</li>
+          <li><span class="con">Another buyer received a rug with active moth infestation</span> — a condition-reporting miss.</li>
+          <li><span class="con">28% buyer&rsquo;s premium is at the top of the normal range</span> and is what pushes the landed multiplier to roughly 1.40.</li>
+        </ul>
+        <p>
+          <strong>Not disqualifying.</strong> Bid, but get the sale confirmed in writing, pay by a
+          method that can be disputed, and collect in person if possible — Rehoboth is close enough
+          that pickup removes both the shipping cost and the handling risk.
+        </p>
+      </article>
+
+      <article class="house caution">
+        <div class="house-head">
+          <h3>Thomaston Place <span class="where">Thomaston, ME</span></h3>
+          <span class="verdict-chip caution">Good, with caution</span>
+        </div>
+        <p class="score">~444 platform reviews · widely respected in the trade</p>
+        <ul>
+          <li>Quality consignments, good photography, reliable condition descriptions.</li>
+          <li><span class="con">In-house shipping is the most-complained-about in this set</span> — reported at roughly 3&times; expected cost with 3–4 week waits, plus poor communication.</li>
+          <li><span class="con">One buyer argued significant faults should have been caught by the house</span>, with limited photographs masking problems on a 25% fee.</li>
+          <li>Closest geographically. <strong>Collect in person</strong> and the main complaint disappears.</li>
+        </ul>
+      </article>
+
+      <article class="house caution">
+        <div class="house-head">
+          <h3>Jackson&rsquo;s International <span class="where">Cedar Falls, IA</span></h3>
+          <span class="verdict-chip caution">Caution — shipping</span>
+        </div>
+        <p class="score">~346 platform reviews · <span class="con">BBB 2.9 / 5</span> · not BBB accredited · founded 1969</p>
+        <ul>
+          <li>Long-established with a genuine scholarly reputation; staff described as professional.</li>
+          <li><span class="con">Shipping fees reported at ~300% of customary</span>, described by buyers as &ldquo;over-reaching and profiteering.&rdquo; On a lamp needing $100–400 of packing, that is decisive.</li>
+          <li>The BBB score of 2.9 sits oddly against the trade reputation — treat as a shipping-and-billing problem, not an authenticity one.</li>
+        </ul>
+      </article>
+
+      <article class="house caution">
+        <div class="house-head">
+          <h3>Bruneau &amp; Co. <span class="where">Cranston, RI</span></h3>
+          <span class="verdict-chip caution">Caution — condition reporting</span>
+        </div>
+        <p class="score">~491 platform reviews · not BBB accredited</p>
+        <ul>
+          <li>Well regarded on some categories; professional packing reported by many buyers.</li>
+          <li><span class="con">A buyer reported condition information not honestly shared</span>, and being expected to research the item themselves. That is the failure mode this brief is least able to absorb.</li>
+          <li><span class="con">Sometimes sells online then declines to ship</span>, leaving the buyer to arrange collection and packing. Shipping quoted at double a UPS Store. Slow damage claims.</li>
+        </ul>
+      </article>
+
+      <article class="house caution">
+        <div class="house-head">
+          <h3>Williamson Auction Gallery <span class="where">Hollywood, FL</span></h3>
+          <span class="verdict-chip caution">Caution</span>
+        </div>
+        <p class="score">~313 platform reviews · trading since 2003</p>
+        <ul>
+          <li>Many buyers report good packing, prompt shipping and accurate descriptions.</li>
+          <li><span class="con">Complaints that the gallery &ldquo;routinely loses items.&rdquo;</span></li>
+          <li><span class="con">Changed its holding policy without notice</span> — confiscating and re-selling lots not collected within a month, where it had previously held them 3–6 months.</li>
+        </ul>
+      </article>
+
+      <article class="house caution">
+        <div class="house-head">
+          <h3>Louvre Antique Auction <span class="where">Los Angeles, CA</span></h3>
+          <span class="verdict-chip caution">Caution</span>
+        </div>
+        <p class="score">~118 platform reviews · mixed</p>
+        <ul>
+          <li>Legitimate and long-registered across the major platforms; some buyers report impeccable transactions.</li>
+          <li><span class="con">Items reported not as described</span> — including porcelain sold as old and hand-painted that was neither — with unresponsive follow-up.</li>
+          <li><span class="con">A few reports of items never shipped at all.</span></li>
+          <li>The name invites confusion with the museum. It has no connection to it.</li>
+        </ul>
+      </article>
+
+      <article class="house caution">
+        <div class="house-head">
+          <h3>Unrated small consignors <span class="where">various</span></h3>
+          <span class="verdict-chip caution">Verify before bidding</span>
+        </div>
+        <p>
+          Run 1 also surfaced lots from Liberty &amp; 33rd Furniture Co., Auctions at Deer Ridge
+          Farm, Thriftiques of Iowa, MiddleManBrokers, Main Auction Galleries, Matthew Bullock
+          Auctioneers and SEUYCO. None carried a lot that survived the scope rules, so none was
+          researched. <strong>Research any of them before bidding</strong> — and note that several
+          posted the uninformative estimate ranges described in red flag 11.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SEARCHES ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 5</span>
       <h2>Search strings</h2>
       <p>Reproducible queries, so a run can be repeated exactly.</p>
     </header>
@@ -288,7 +516,7 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
   <!-- ============ COMPS ============ -->
   <section class="sec">
     <header>
-      <span class="label">Section 5</span>
+      <span class="label">Section 6</span>
       <h2>Comp library</h2>
       <p>Realized sales only, each dated and sourced. A pre-sale estimate is a marketing position, not a comp, and never enters this table.</p>
     </header>
@@ -316,7 +544,7 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
   <!-- ============ LESSONS ============ -->
   <section class="sec">
     <header>
-      <span class="label">Section 6</span>
+      <span class="label">Section 7</span>
       <h2>Lessons learned</h2>
       <p>Run 1 · 27 July 2026</p>
     </header>
@@ -391,6 +619,39 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
     </article>
 
     <article class="lesson">
+      <h3><span class="tag">L8</span>Vet the house before quoting a max bid, not after</h3>
+      <p>
+        Run 1 computed a max bid on a lot at Americana Auctions before doing any diligence on the
+        house. The diligence came out mostly fine — 4.6 across 193 reviews — but it also turned up a
+        buyer reporting <strong>a completed purchase withdrawn after someone offered more</strong>.
+        Had that been a pattern rather than a single 2020 report, the bid would have been quoted on
+        a house that does not reliably honour its hammer.
+      </p>
+      <p>
+        The same pass found two houses — Bidhaus and Mynt — with BBB complaints for voiding winning
+        bids, substituting lots, and refusing to honour an authenticity guarantee. <strong>Three
+        Bidhaus lots appeared in run 1</strong> and were rejected on unrelated grounds. That was
+        luck. House diligence now runs before scoring, not after.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L9</span>Every bad house in this set failed on shipping or on honouring the sale — not on fakes</h3>
+      <p>
+        The intuition going in was that the risk is counterfeits. Across eleven houses researched,
+        the actual failure modes were <strong>shipping charged at 3× customary</strong> (Jackson&rsquo;s,
+        Thomaston, Andrew Jones), <strong>condition not disclosed</strong> (Bruneau), and
+        <strong>sales not honoured after the hammer</strong> (Bidhaus, Americana once). Only Mynt
+        failed on authenticity directly.
+      </p>
+      <p>
+        This reorders the questions to ask a house. Shipping cost and the terms around a completed
+        sale deserve as much scrutiny before bidding as the mark on the base — and both argue
+        strongly for the standing preference for local pickup.
+      </p>
+    </article>
+
+    <article class="lesson">
       <h3><span class="tag">L7</span>Shipping cost is an authenticity signal</h3>
       <p>
         A $3,250 Muller Frères offered from Lithuania with $16.99 economy shipping was rejected
@@ -402,11 +663,15 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
 
   <!-- ============ CHANGELOG ============ -->
   <section class="sec">
-    <header><span class="label">Section 7</span><h2>Changelog</h2></header>
+    <header><span class="label">Section 8</span><h2>Changelog</h2></header>
     <div class="scroll">
       <table>
         <thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Changes</th></tr></thead>
         <tbody>
+          <tr>
+            <td><strong>v1.3</strong></td><td class="when">27 Jul 2026</td>
+            <td><strong>Section 4 &mdash; Auctioneer diligence &mdash; added.</strong> Eleven houses researched against published reviews, BBB records and complaint boards. <strong>Bidhaus and Mynt Auctions rated do-not-bid</strong> for voiding winning bids, lot substitution, fabricated-bid allegations and a refused authenticity guarantee. Woody, Toomey, Rago and Andrew Jones rated trusted. Americana &mdash; which holds the run-1 scored lot &mdash; rated good with caution over a withdrawn-purchase complaint. Thomaston, Jackson&rsquo;s, Bruneau, Williamson and Louvre flagged, mostly on shipping and condition reporting. Red flag 13 added (hyper-precise estimates). Lessons L8 and L9 added.</td>
+          </tr>
           <tr>
             <td><strong>v1.2</strong></td><td class="when">27 Jul 2026</td>
             <td>Converted to HTML; markdown retired. <strong>Comp library opened</strong> with four dated Pairpoint puffy boudoir sales — Toomey and Rago established as the standing comp sources. Red flags 08–11 added from real rejections (marriage-by-grammar, &ldquo;associated base,&rdquo; era-as-attribution, uninformative estimate ranges). Pairpoint maker profile added. Channel directory expanded to 14 sources with reachability. Lessons L3–L7 added; L1 and L2 marked resolved.</td>
