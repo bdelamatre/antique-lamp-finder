@@ -3,14 +3,14 @@
 Repository for the **Antique Electric Lamp Acquisition** routine, which runs weekly on a
 schedule. Two artifacts live here:
 
-- `LAMP-GUIDE.md` — persistent expertise. **Amend, never rewrite.** Read first every run.
-- `LAMP-CATALOG.md` — buy candidates. **Rebuilt every run** from live-verified data.
+- `LAMP-GUIDE.html` — persistent expertise. **Amend, never rewrite.** Read first every run.
+- `LAMP-CATALOG.html` — buy candidates. **Rebuilt every run** from live-verified data.
 
 ## Standing instructions
 
-### The routine spec is not the whole spec — read `LAMP-GUIDE.md` §0 first
+### The routine spec is not the whole spec — read `LAMP-GUIDE.html` §0 first
 The routine prompt lives in the scheduler and cannot be edited from inside a run. Owner-approved
-amendments to it are recorded in **`LAMP-GUIDE.md` §0 "Active overrides"** and **supersede the
+amendments to it are recorded in **`LAMP-GUIDE.html` §0 "Active overrides"** and **supersede the
 routine text they name**. Currently in force:
 
 - **OV-1 (2026-07-27)** — replaces the §1 size gate. Single lamp **14–28"** high, shade
@@ -18,10 +18,23 @@ routine text they name**. Currently in force:
   18"/10" floors excluded boudoir and desk lamps, which is the affordable Tier A supply and
   the historically correct form for a dresser.
 
-### Catalogs go in the repo, never to hosted artifacts
-Per the repository owner (2026-07-27): the HTML catalog view is **committed to this repository**
-as `LAMP-CATALOG.html`. Do not publish it as a hosted artifact. It must stay a self-contained
+### HTML only — the markdown artifacts are retired
+Per the repository owner (2026-07-27): both `LAMP-CATALOG.html` and `LAMP-GUIDE.html` are
+**high-fidelity HTML, committed to this repository**. The `.md` versions were deleted and must
+not be recreated. Do not publish either as a hosted artifact. Each must stay a self-contained
 single file so it renders straight from the repo.
+
+### Every listing carries its link
+Per the repository owner (2026-07-27): rejected lots and watchlist entries get direct URLs too,
+not just buy candidates — a rejection should be checkable, not taken on trust. The catalog also
+opens with a **count by source**, so the breadth of the sweep is visible up front.
+
+### Sweep the whole internet, not just the easy channel
+Per the repository owner (2026-07-27): run 1 leaned almost entirely on eBay because it fetched
+reliably. That is a failure, not a shortcut. Work the aggregators (LiveAuctioneers reaches
+dozens of houses in one query), the auction houses direct, the comp publishers (Toomey, Rago),
+and the fixed-price and local channels. Record every source attempted — including the ones that
+blocked — with counts.
 
 ### Always merge to `main` at the end of a run
 Per the repository owner (2026-07-27): work is developed on the run's designated

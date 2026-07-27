@@ -1,0 +1,432 @@
+<title>Lamp Guide — v1.2</title>
+
+<style>
+  :root {
+    --ground:#EAE4D8; --card:#F3EEE4; --card-2:#EDE6D9;
+    --ink:#1E1712; --ink-2:#4A4038; --ink-3:#7A6E61;
+    --rule:#CDC2AE; --rule-soft:#DBD2C1;
+    --glow:#A9702A; --patina:#40685C; --rust:#A24A32; --amber:#8A6516;
+    --shadow:rgba(30,23,18,.10);
+    --serif:"Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --measure:66ch; --pad:clamp(1.25rem,4vw,3.25rem);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--ground:#17120E;--card:#211A14;--card-2:#1A150F;--ink:#F0E7DA;--ink-2:#C4B6A4;--ink-3:#8A7C6C;
+      --rule:#3B2F25;--rule-soft:#2C231B;--glow:#E0A24A;--patina:#7FA79A;--rust:#D07054;--amber:#D9B564;--shadow:rgba(0,0,0,.45);}
+  }
+  :root[data-theme="dark"]{--ground:#17120E;--card:#211A14;--card-2:#1A150F;--ink:#F0E7DA;--ink-2:#C4B6A4;--ink-3:#8A7C6C;
+    --rule:#3B2F25;--rule-soft:#2C231B;--glow:#E0A24A;--patina:#7FA79A;--rust:#D07054;--amber:#D9B564;--shadow:rgba(0,0,0,.45);}
+  :root[data-theme="light"]{--ground:#EAE4D8;--card:#F3EEE4;--card-2:#EDE6D9;--ink:#1E1712;--ink-2:#4A4038;--ink-3:#7A6E61;
+    --rule:#CDC2AE;--rule-soft:#DBD2C1;--glow:#A9702A;--patina:#40685C;--rust:#A24A32;--amber:#8A6516;--shadow:rgba(30,23,18,.10);}
+
+  body{background:var(--ground);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:78rem;margin:0 auto;padding:var(--pad);display:flex;flex-direction:column;gap:clamp(2.5rem,5vw,4rem);}
+  .label{font-family:var(--sans);font-size:.69rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
+  a{color:inherit;text-decoration-color:var(--glow);text-underline-offset:3px;}
+  a:hover{color:var(--glow);}
+  a:focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:2px;}
+  code{font-family:var(--mono);font-size:.86em;background:var(--card-2);padding:.1em .35em;border:1px solid var(--rule-soft);}
+
+  .masthead{display:flex;flex-direction:column;gap:.9rem;border-bottom:1px solid var(--rule);padding-bottom:1.75rem;}
+  .masthead h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.05;font-weight:400;letter-spacing:-.015em;margin:0;text-wrap:balance;}
+  .masthead p{margin:0;max-width:var(--measure);color:var(--ink-2);}
+  .runbar{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem;}
+
+  .sec{display:flex;flex-direction:column;gap:1.4rem;}
+  .sec>header{display:flex;flex-direction:column;gap:.4rem;}
+  .sec>header h2{font-size:clamp(1.3rem,3vw,1.75rem);font-weight:400;margin:0;line-height:1.2;}
+  .sec>header p{margin:0;max-width:var(--measure);color:var(--ink-2);font-size:.95rem;}
+
+  .override{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--patina);padding:clamp(1.15rem,3vw,1.85rem);display:flex;flex-direction:column;gap:1rem;box-shadow:0 1px 2px var(--shadow);}
+  .override h3{margin:0;font-size:1.2rem;font-weight:400;}
+  .override p{margin:0;max-width:var(--measure);color:var(--ink-2);}
+
+  .maker{background:var(--card);border:1px solid var(--rule);padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;box-shadow:0 1px 2px var(--shadow);}
+  .maker h3{margin:0;font-size:1.2rem;font-weight:400;display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline;}
+  .maker h3 .yrs{font-family:var(--sans);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);}
+  .maker ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.5rem;color:var(--ink-2);}
+  .maker ul li::marker{color:var(--glow);}
+  .makers{display:grid;grid-template-columns:repeat(auto-fit,minmax(21rem,1fr));gap:1.25rem;}
+
+  .flags{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+  .flag-row{background:var(--card);padding:1rem 1.25rem;display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:1rem;align-items:start;}
+  .flag-row .n{font-family:var(--sans);font-size:.8rem;font-weight:700;color:var(--glow);font-variant-numeric:tabular-nums;padding-top:.15rem;}
+  .flag-row p{margin:0;color:var(--ink-2);font-size:.95rem;}
+  .flag-row strong{color:var(--ink);}
+  .flag-row.new{border-left:2px solid var(--glow);}
+
+  .scroll{overflow-x:auto;border:1px solid var(--rule);background:var(--card);}
+  table{border-collapse:collapse;width:100%;min-width:40rem;}
+  th,td{text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;font-size:.92rem;}
+  thead th{font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--rule);white-space:nowrap;}
+  tbody tr:last-child td{border-bottom:none;}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  td.when{white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .rate{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.08em;}
+  .rate.a{color:var(--patina);} .rate.b{color:var(--amber);} .rate.d{color:var(--rust);}
+  .bad{color:var(--rust);} .good{color:var(--patina);}
+
+  .queries{background:var(--card);border:1px solid var(--rule);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:1rem;}
+  .q{display:flex;flex-direction:column;gap:.3rem;}
+  .q code{display:block;background:var(--card-2);padding:.6rem .75rem;overflow-x:auto;white-space:pre;font-size:.78rem;line-height:1.6;}
+
+  .lesson{background:var(--card);border:1px solid var(--rule);padding:1.35rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;box-shadow:0 1px 2px var(--shadow);}
+  .lesson h3{margin:0;font-size:1.12rem;font-weight:400;line-height:1.3;text-wrap:balance;}
+  .lesson h3 .tag{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--glow);margin-right:.55rem;}
+  .lesson p{margin:0;color:var(--ink-2);font-size:.95rem;max-width:var(--measure);}
+  .lesson.solved{border-left:3px solid var(--patina);}
+
+  footer{border-top:1px solid var(--rule);padding-top:1.5rem;color:var(--ink-3);font-size:.88rem;display:flex;flex-direction:column;gap:.4rem;}
+  @media(prefers-reduced-motion:no-preference){a{transition:color .15s ease;}}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="label">Antique Electric Lamp Acquisition</span>
+    <h1>Lamp Guide</h1>
+    <p>
+      Persistent expertise for the acquisition routine. <strong>Amend, never rewrite.</strong>
+      Read first, every run. Where this document contradicts the routine prompt, the overrides in
+      the first section win.
+    </p>
+    <div class="runbar">
+      <span class="label">Version 1.2</span>
+      <span class="label">Last run 27 July 2026</span>
+    </div>
+  </header>
+
+  <!-- ============ OVERRIDES ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 0</span>
+      <h2>Active overrides</h2>
+      <p>
+        The routine prompt lives in the scheduler and cannot be edited from inside a run.
+        Owner-approved amendments are recorded here and <strong>supersede the routine text they
+        name.</strong> Apply them every run.
+      </p>
+    </header>
+    <div class="override">
+      <h3>OV-1 — Size gate · approved 27 July 2026</h3>
+      <div class="scroll">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Overall height</th><th scope="col">Shade diameter</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Single lamp</strong></td><td>14–28&Prime;</td><td>8–18&Prime;</td></tr>
+            <tr><td><strong>Pair</strong>, each lamp</td><td>12–28&Prime;</td><td>6–18&Prime;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Shade over 20&Prime; remains disqualifying in all cases. A pair at the working budget beats a
+        single at the stretch ceiling.
+      </p>
+      <p>
+        <strong>Why both floors moved.</strong> The original gate demanded 18&Prime; height and a
+        10&Prime; shade. Boudoir and desk lamps measure 11–16&Prime; with 6–10&Prime; shades, so
+        <em>either</em> floor alone excluded the whole category — the affordable Tier&nbsp;A supply,
+        and the form historically built for a dresser. Lowering height alone would have changed
+        nothing.
+      </p>
+      <p>
+        <strong>Still excluded:</strong> genuine accessory scale. The 11&Prime; Heintz desk lamp and
+        the 5.5&Prime;-shade Daum boudoir lamp both failed under OV-1, correctly.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ MAKERS ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 1</span>
+      <h2>Makers &amp; marks</h2>
+      <p>Where each maker actually signed. A mark in the wrong place is worse than no mark — it means someone was trying.</p>
+    </header>
+    <div class="makers">
+
+      <article class="maker">
+        <h3>Handel <span class="yrs">Meriden, CT · 1885–1936 · Tier A</span></h3>
+        <ul>
+          <li><strong>Reverse-painted shades are painted on the interior.</strong> Exterior decoration is a reproduction tell, full stop.</li>
+          <li>Signs the <strong>lower rim of the shade</strong>, as <code>HANDEL</code> plus a painter's number. Often a <strong>cloth label</strong> on the base felt.</li>
+          <li>Base underside marked <code>HANDEL</code>, raised or stamped. Patent numbers appear on the shade rim: <code>HANDEL PAT'D NO. 979664</code>.</li>
+          <li>Chipped-ice and &ldquo;Teroca&rdquo; <em>textured exteriors</em> are period-correct — not the same thing as exterior painting. The decoration still lives inside.</li>
+          <li><strong>Measured heights:</strong> desk 14–15.5&Prime; · boudoir 12–16&Prime; · table 20–26&Prime;.</li>
+        </ul>
+      </article>
+
+      <article class="maker">
+        <h3>Pairpoint <span class="yrs">New Bedford, MA · 1880–1938 · Tier A</span></h3>
+        <ul>
+          <li><strong>Puffies are moulded, not blown-and-painted.</strong> A genuine puffy shade is described as &ldquo;blown-out&rdquo; — the relief is in the glass itself.</li>
+          <li>Base stamped with the name plus a <strong>model number</strong>, e.g. <code>Pairpoint C3064</code>. The number is a good sign of factory work.</li>
+          <li><strong>House estimates run high on puffies.</strong> Three of four comparable sales landed under $800 against estimates as high as $2,500. Bid the comps, not the estimate.</li>
+          <li>Boudoir puffies sit at roughly 14.5&Prime; with an 8.5&Prime; shade — inside OV-1, and the sweet spot for this brief.</li>
+        </ul>
+      </article>
+
+      <article class="maker">
+        <h3>Muller Frères <span class="yrs">Lunéville, France · 1895–1936 · Tier D</span></h3>
+        <ul>
+          <li>Signature acid-etched or engraved on the shade: <code>Muller Fres Luneville</code>, often with <code>Luneville</code> on a second line.</li>
+          <li><strong>A plausible signature is not evidence for this maker.</strong> Since the 1980s, glass has been produced copying the correct 1919 signature style with <em>different graphism</em> — letterforms, spacing and stroke weight diverge.</li>
+          <li>Demand a high-resolution raking-light photograph of the signature before bidding.</li>
+        </ul>
+      </article>
+
+      <article class="maker">
+        <h3>Tiffany Studios <span class="yrs">New York · 1902–1932 · Tier A</span></h3>
+        <ul>
+          <li>Base underside stamped <code>TIFFANY STUDIOS NEW YORK</code> with a model number.</li>
+          <li>Leaded shades carry a stamped <strong>inner rim tag</strong>, never an exterior mark.</li>
+        </ul>
+      </article>
+
+      <article class="maker">
+        <h3>Dirk van Erp <span class="yrs">San Francisco · 1908–1929 · Tier C</span></h3>
+        <ul>
+          <li>Windmill mark, usually with <code>SAN FRANCISCO</code>. Box-mark variants date the piece.</li>
+          <li>The market is saturated with &ldquo;van Erp <em>style</em>&rdquo; copper-and-mica lamps. Five appeared in a single run-1 sweep.</li>
+        </ul>
+      </article>
+
+      <article class="maker">
+        <h3>Roycroft <span class="yrs">East Aurora, NY · 1895–1938 · Tier C</span></h3>
+        <ul>
+          <li>Orb-and-cross mark, struck into the base underside or rim on copper.</li>
+          <li>A listing claiming Roycroft without showing the mark is asking to be taken on trust. Request the photograph.</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ RED FLAGS ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 2</span>
+      <h2>Authenticity red flags</h2>
+      <p>Additive each run. Marked entries were added from a real rejection rather than from reading.</p>
+    </header>
+    <div class="flags">
+      <div class="flag-row"><span class="n">01</span><p><strong>&ldquo;Style,&rdquo; &ldquo;in the manner of,&rdquo; &ldquo;after,&rdquo; &ldquo;inspired by,&rdquo; &ldquo;attributed.&rdquo;</strong> Reproduction and marriage markers. Negative-keyword them in every saved search.</p></div>
+      <div class="flag-row"><span class="n">02</span><p><strong>Exterior-painted &ldquo;reverse-painted&rdquo; shade.</strong> Reproduction.</p></div>
+      <div class="flag-row"><span class="n">03</span><p><strong>Bright, uniform solder on a &ldquo;period&rdquo; leaded came.</strong> Original solder is oxidized and irregular.</p></div>
+      <div class="flag-row"><span class="n">04</span><p><strong>Perfectly uniform glass in a period leaded shade.</strong> Period glass striates, varies, and bubbles.</p></div>
+      <div class="flag-row"><span class="n">05</span><p><strong>Signature in the wrong location or wrong form.</strong> Worse than none.</p></div>
+      <div class="flag-row"><span class="n">06</span><p><strong>Spelter posing as bronze.</strong> Light for its size, grey at chips and wear points.</p></div>
+      <div class="flag-row new"><span class="n">07</span><p><strong>Shipping economics that contradict the asking price.</strong> A four-figure art glass lamp offered with $17 economy shipping is incoherent — nobody insures and professionally packs cameo glass at that price. The shipping line is a claim about what the seller believes the object is worth. When it contradicts the ask, believe the shipping line.</p></div>
+      <div class="flag-row new"><span class="n">08</span><p><strong>A title that names the base&rsquo;s maker but not the shade&rsquo;s.</strong> &ldquo;Pairpoint base, reverse painted&rdquo; or &ldquo;leaded shade with Handel base&rdquo; is conceding a marriage in the grammar. Four lots in run 1 were caught this way.</p></div>
+      <div class="flag-row new"><span class="n">09</span><p><strong>&ldquo;On associated base&rdquo; or &ldquo;on later associated base.&rdquo;</strong> An explicit, honest disclosure of a marriage. Respect the honesty; still fails the completeness gate.</p></div>
+      <div class="flag-row new"><span class="n">10</span><p><strong>Era language standing in for attribution.</strong> &ldquo;Handel era,&rdquo; &ldquo;Handel period.&rdquo; Names a decade, not a maker.</p></div>
+      <div class="flag-row new"><span class="n">11</span><p><strong>An estimate range so wide it carries no information</strong> — $100–$10,000, $1–$1,000. The house is declining to value the lot. Treat as unvalued.</p></div>
+      <div class="flag-row"><span class="n">12</span><p><strong>Silence in a condition report is a question, not a green light.</strong> Reputable houses disclose restoration.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ CHANNELS ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 3</span>
+      <h2>Channel directory</h2>
+      <p>
+        Reachability is a first-class property. A source that cannot be fetched yields zero
+        candidates regardless of its inventory, so it is rated here alongside quality.
+      </p>
+    </header>
+    <div class="scroll">
+      <table>
+        <thead><tr><th scope="col">Channel</th><th scope="col">Reach</th><th scope="col">Rating</th><th scope="col">What it is for</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.liveauctioneers.com/">LiveAuctioneers</a></td><td class="good">Search + lots</td><td class="rate a">A</td><td><strong>Primary discovery.</strong> Aggregates Americana, Woody, Andrew Jones, Bidhaus, Jackson&rsquo;s, Mynt and more in one query. Use <code>www.</code> for lot pages — the <code>p1.</code> subdomain 403s. Price-guide pages show thumbnails only, not realized prices.</td></tr>
+          <tr><td><a href="https://www.toomeyco.com/">Toomey &amp; Co.</a></td><td class="good">Results</td><td class="rate a">A</td><td><strong>Primary comp source.</strong> Publishes realized prices openly with dates and estimates. Art Nouveau / Art Deco Glass &amp; Lighting sales are directly on-subject.</td></tr>
+          <tr><td><a href="https://www.ragoarts.com/">Rago</a></td><td class="good">Results</td><td class="rate a">A</td><td><strong>Primary comp source.</strong> Same open realized prices. Pair with Toomey.</td></tr>
+          <tr><td><a href="https://www.ebay.com/">eBay</a> — live</td><td class="good">Search + items</td><td class="rate a">A</td><td>Fixed-price and auction. Comma-OR syntax works in <code>_nkw</code> and sweeps a whole tier in one call.</td></tr>
+          <tr><td>eBay — sold</td><td class="bad">Login wall</td><td class="rate d">F</td><td><strong>Not a comp source.</strong> <code>LH_Sold=1</code> redirects to sign-in. Do not spend calls here.</td></tr>
+          <tr><td><a href="https://woodyauction.com/">Woody Auction</a></td><td class="good">Schedule + terms</td><td class="rate b">B</td><td>Own site fetches. <strong>Fee structure is the point:</strong> 15% direct, 20% + 3.99% via LiveAuctioneers, 0% in person.</td></tr>
+          <tr><td><a href="https://www.1stdibs.com/">1stDibs</a></td><td class="good">Listings</td><td class="rate b">C</td><td>Retail asks only — a ceiling, never a comp.</td></tr>
+          <tr><td><a href="https://www.bidsquare.com/">Bidsquare</a></td><td class="good">House pages</td><td class="rate b">B</td><td>Reachable; returned nothing matching this run.</td></tr>
+          <tr><td><a href="https://www.fontainesauction.com/">Fontaine&rsquo;s</a></td><td class="bad">403</td><td class="rate d">—</td><td><strong>Highest-value unsolved access problem.</strong> Probably the richest Tier&nbsp;A source in range. Try the Invaluable house page, or call (413) 448-8922.</td></tr>
+          <tr><td><a href="https://www.invaluable.com/">Invaluable</a></td><td class="bad">403</td><td class="rate d">—</td><td>Blocked. Overlaps LiveAuctioneers, so lower priority to solve.</td></tr>
+          <tr><td>Etsy</td><td class="bad">403</td><td class="rate d">—</td><td>Blocked to automated fetch.</td></tr>
+          <tr><td>Ruby Lane</td><td class="bad">503</td><td class="rate d">—</td><td>Unavailable this run. Retry before writing off.</td></tr>
+          <tr><td>EBTH · ShopGoodwill</td><td class="bad">JS only</td><td class="rate d">—</td><td>Return navigation shells without listings.</td></tr>
+          <tr><td>Thomaston Place</td><td class="bad">403 / conflict</td><td class="rate d">C</td><td>House calendar and aggregators disagree about whether sales exist. Resolve by phone, (207) 354-8141.</td></tr>
+          <tr><td>Facebook · Craigslist · EstateSales.net</td><td>Untested</td><td class="rate d">—</td><td>Local sweep still unrun. Likely login-walled.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ SEARCHES ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 4</span>
+      <h2>Search strings</h2>
+      <p>Reproducible queries, so a run can be repeated exactly.</p>
+    </header>
+    <div class="queries">
+      <div class="q"><span class="label">Negative keywords — append to every query</span>
+        <code>-style -inspired -manner -after -reproduction -repro -dale -meyda
+-quoizel -"warehouse of tiffany" -"in the manner" -"era" -shade -only
+-parts -project -base</code></div>
+      <div class="q"><span class="label">LiveAuctioneers — upcoming lots by maker</span>
+        <code>https://www.liveauctioneers.com/search/?keyword=pairpoint+lamp&amp;status=online</code></div>
+      <div class="q"><span class="label">eBay — sweep a whole tier in one call</span>
+        <code>https://www.ebay.com/sch/i.html?_nkw=(daum+nancy,muller+freres,galle)+lamp&amp;_udhi=6500&amp;_sop=10</code></div>
+      <div class="q"><span class="label">Comps — realized prices with dates</span>
+        <code>site:toomeyco.com OR site:ragoarts.com "puffy boudoir lamp" sold</code></div>
+      <div class="q"><span class="label">Sort modifiers</span>
+        <code>_sop=10  newly listed          _sop=1  ending soonest
+LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
+    </div>
+  </section>
+
+  <!-- ============ COMPS ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 5</span>
+      <h2>Comp library</h2>
+      <p>Realized sales only, each dated and sourced. A pre-sale estimate is a marketing position, not a comp, and never enters this table.</p>
+    </header>
+    <div class="scroll">
+      <table>
+        <thead><tr><th scope="col">Maker · form</th><th scope="col">Lot</th><th scope="col">House</th><th scope="col">Date</th><th scope="col" class="n">Estimate</th><th scope="col" class="n">Realized</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="4"><strong>Pairpoint</strong><br>puffy boudoir</td><td><a href="https://www.toomeyco.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/174">Puffy boudoir lamp</a></td><td>Toomey</td><td class="when">31 Oct 2024</td><td class="n">$1,000–1,500</td><td class="n"><strong>$645</strong></td></tr>
+          <tr><td><a href="https://www.toomeyco.com/auctions/2024/03/art-nouveau-art-deco-glass-lighting/207">with nasturtiums</a></td><td>Toomey</td><td class="when">21 Mar 2024</td><td class="n">$1,500–2,500</td><td class="n"><strong>$693</strong></td></tr>
+          <tr><td><a href="https://www.ragoarts.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/172">with roses</a></td><td>Rago</td><td class="when">31 Oct 2024</td><td class="n">$800–1,200</td><td class="n"><strong>$786</strong></td></tr>
+          <tr><td><a href="https://www.toomeyco.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/175">with apple blossoms</a></td><td>Toomey</td><td class="when">31 Oct 2024</td><td class="n">$800–1,200</td><td class="n"><strong>$1,512</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note" style="margin:0;color:var(--ink-2);max-width:var(--measure);">
+      <strong>Pairpoint puffy boudoir: low $645 · high $1,512</strong>, three of four under $800.
+      Estimates overshot realized prices in three of four sales, by up to 3&times;.
+      <br><br>
+      <strong>Still needed:</strong> Handel boudoir · Handel desk · Pairpoint puffy nautilus ·
+      Daum Nancy boudoir · van Erp and Roycroft copper. Each needs three dated sales before a lot in
+      that form can be scored.
+    </p>
+  </section>
+
+  <!-- ============ LESSONS ============ -->
+  <section class="sec">
+    <header>
+      <span class="label">Section 6</span>
+      <h2>Lessons learned</h2>
+      <p>Run 1 · 27 July 2026</p>
+    </header>
+
+    <article class="lesson solved">
+      <h3><span class="tag">L1 · resolved</span>When a gate eliminates everything, suspect the gate</h3>
+      <p>
+        The original 18&Prime; floor excluded the exact categories the tier table calls the realistic
+        entry at this budget. Three of five verified candidates died on it while sitting inside the
+        working budget. Owner approved lowering it; see OV-1.
+      </p>
+      <p>
+        The part worth remembering: <strong>implementing the fix surfaced a second defect.</strong>
+        The 10&Prime; shade-diameter floor was excluding the same category independently, so moving
+        height alone would have accomplished nothing. When a constraint is compound, check every arm
+        of it before declaring the fix done.
+      </p>
+    </article>
+
+    <article class="lesson solved">
+      <h3><span class="tag">L2 · resolved</span>Comps live at the auction houses, not the aggregators</h3>
+      <p>
+        Run 1 stalled because eBay&rsquo;s sold search is login-walled and LiveAuctioneers&rsquo;
+        price-guide pages show thumbnails behind a &ldquo;See Sold Price&rdquo; gate. The answer was
+        <strong>Toomey and Rago, which publish realized prices openly</strong> with dates and
+        estimates — four dated Pairpoint sales in a single query. Comp sourcing now leads the run.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L3</span>Fees and premiums decide more purchases than price does</h3>
+      <p>
+        A 28% buyer&rsquo;s premium plus platform fee and tax multiplies hammer by roughly
+        <strong>1.40</strong>. On the one scored lot this run, the difference between bidding $228
+        and bidding its own low estimate of $650 is the difference between a good buy and a bad one —
+        the lamp is identical.
+      </p>
+      <p>
+        The same lot bought three ways at Woody costs three different amounts: <strong>15% direct,
+        20% + 3.99% through the platform, 0% in person.</strong> Always read the terms per venue,
+        never per house.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L4</span>House estimates on puffies run high</h3>
+      <p>
+        Three of four realized Pairpoint puffy boudoir sales landed under $800 against estimates
+        reaching $2,500. An estimate is a marketing position. Score against realized comps and treat
+        the estimate as, at most, a signal of what the house hopes.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L5</span>Marriages are usually disclosed in the grammar</h3>
+      <p>
+        Four lots this run named the base&rsquo;s maker and left the shade unattributed —
+        &ldquo;Pairpoint base, reverse painted,&rdquo; &ldquo;leaded shade with Handel base&rdquo; —
+        and three more said &ldquo;on associated base&rdquo; outright. Reading titles as grammar
+        rather than keywords catches marriages before a page is ever fetched.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L6</span>Reachability beats coverage</h3>
+      <p>
+        Eight of fourteen sources could not be fetched at all. Because nothing publishes from a
+        search snippet, an unreachable source yields nothing however good its stock.
+        <strong>Solving Fontaine&rsquo;s access is worth more than adding three new channels</strong>
+        — its June sale carried 200+ Tiffany lots and it is currently invisible.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L7</span>Shipping cost is an authenticity signal</h3>
+      <p>
+        A $3,250 Muller Frères offered from Lithuania with $16.99 economy shipping was rejected
+        without ever needing to examine the signature. The shipping line is a claim about what the
+        seller believes the object is worth; when it contradicts the ask, believe the shipping line.
+      </p>
+    </article>
+  </section>
+
+  <!-- ============ CHANGELOG ============ -->
+  <section class="sec">
+    <header><span class="label">Section 7</span><h2>Changelog</h2></header>
+    <div class="scroll">
+      <table>
+        <thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Changes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>v1.2</strong></td><td class="when">27 Jul 2026</td>
+            <td>Converted to HTML; markdown retired. <strong>Comp library opened</strong> with four dated Pairpoint puffy boudoir sales — Toomey and Rago established as the standing comp sources. Red flags 08–11 added from real rejections (marriage-by-grammar, &ldquo;associated base,&rdquo; era-as-attribution, uninformative estimate ranges). Pairpoint maker profile added. Channel directory expanded to 14 sources with reachability. Lessons L3–L7 added; L1 and L2 marked resolved.</td>
+          </tr>
+          <tr>
+            <td><strong>v1.1</strong></td><td class="when">27 Jul 2026</td>
+            <td>Section 0 overrides added. OV-1 replaces the routine size gate; both height and shade floors lowered. Three rejections reinstated.</td>
+          </tr>
+          <tr>
+            <td><strong>v1.0</strong></td><td class="when">27 Jul 2026</td>
+            <td>Guide created. Maker profiles, red flags 01–07, channel directory, search strings, empty comp library, lessons L1–L2.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>Amend, never rewrite. Version bumped every run.</p>
+    <p>Where this guide and the routine prompt disagree, Section 0 wins.</p>
+  </footer>
+
+</div>

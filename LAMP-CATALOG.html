@@ -2,500 +2,425 @@
 
 <style>
   :root {
-    --ground:      #EAE4D8;
-    --ground-2:    #E1D9CA;
-    --card:        #F3EEE4;
-    --ink:         #1E1712;
-    --ink-2:       #4A4038;
-    --ink-3:       #7A6E61;
-    --rule:        #CDC2AE;
-    --rule-soft:   #DBD2C1;
-    --glow:        #A9702A;
-    --glow-bright: #C98A34;
-    --patina:      #4A6F63;
-    --rust:        #A24A32;
-    --shadow:      rgba(30, 23, 18, .10);
-
-    --serif: "Hoefler Text", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    --sans:  ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-    --measure: 68ch;
-    --pad: clamp(1.25rem, 4vw, 3.25rem);
+    --ground:#EAE4D8; --ground-2:#E1D9CA; --card:#F3EEE4; --card-2:#EDE6D9;
+    --ink:#1E1712; --ink-2:#4A4038; --ink-3:#7A6E61;
+    --rule:#CDC2AE; --rule-soft:#DBD2C1;
+    --glow:#A9702A; --glow-bright:#C98A34;
+    --patina:#40685C; --rust:#A24A32; --amber:#8A6516;
+    --shadow:rgba(30,23,18,.10);
+    --serif:"Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --measure:68ch;
+    --pad:clamp(1.25rem,4vw,3.25rem);
   }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ground:      #17120E;
-      --ground-2:    #100C09;
-      --card:        #211A14;
-      --ink:         #F0E7DA;
-      --ink-2:       #C4B6A4;
-      --ink-3:       #8A7C6C;
-      --rule:        #3B2F25;
-      --rule-soft:   #2C231B;
-      --glow:        #E0A24A;
-      --glow-bright: #F0BB6C;
-      --patina:      #7FA79A;
-      --rust:        #D07054;
-      --shadow:      rgba(0, 0, 0, .45);
+  @media (prefers-color-scheme:dark){
+    :root{
+      --ground:#17120E; --ground-2:#100C09; --card:#211A14; --card-2:#1A150F;
+      --ink:#F0E7DA; --ink-2:#C4B6A4; --ink-3:#8A7C6C;
+      --rule:#3B2F25; --rule-soft:#2C231B;
+      --glow:#E0A24A; --glow-bright:#F0BB6C;
+      --patina:#7FA79A; --rust:#D07054; --amber:#D9B564;
+      --shadow:rgba(0,0,0,.45);
     }
   }
-
-  :root[data-theme="dark"] {
-    --ground:      #17120E;
-    --ground-2:    #100C09;
-    --card:        #211A14;
-    --ink:         #F0E7DA;
-    --ink-2:       #C4B6A4;
-    --ink-3:       #8A7C6C;
-    --rule:        #3B2F25;
-    --rule-soft:   #2C231B;
-    --glow:        #E0A24A;
-    --glow-bright: #F0BB6C;
-    --patina:      #7FA79A;
-    --rust:        #D07054;
-    --shadow:      rgba(0, 0, 0, .45);
+  :root[data-theme="dark"]{
+    --ground:#17120E; --ground-2:#100C09; --card:#211A14; --card-2:#1A150F;
+    --ink:#F0E7DA; --ink-2:#C4B6A4; --ink-3:#8A7C6C;
+    --rule:#3B2F25; --rule-soft:#2C231B;
+    --glow:#E0A24A; --glow-bright:#F0BB6C;
+    --patina:#7FA79A; --rust:#D07054; --amber:#D9B564;
+    --shadow:rgba(0,0,0,.45);
+  }
+  :root[data-theme="light"]{
+    --ground:#EAE4D8; --ground-2:#E1D9CA; --card:#F3EEE4; --card-2:#EDE6D9;
+    --ink:#1E1712; --ink-2:#4A4038; --ink-3:#7A6E61;
+    --rule:#CDC2AE; --rule-soft:#DBD2C1;
+    --glow:#A9702A; --glow-bright:#C98A34;
+    --patina:#40685C; --rust:#A24A32; --amber:#8A6516;
+    --shadow:rgba(30,23,18,.10);
   }
 
-  :root[data-theme="light"] {
-    --ground:      #EAE4D8;
-    --ground-2:    #E1D9CA;
-    --card:        #F3EEE4;
-    --ink:         #1E1712;
-    --ink-2:       #4A4038;
-    --ink-3:       #7A6E61;
-    --rule:        #CDC2AE;
-    --rule-soft:   #DBD2C1;
-    --glow:        #A9702A;
-    --glow-bright: #C98A34;
-    --patina:      #4A6F63;
-    --rust:        #A24A32;
-    --shadow:      rgba(30, 23, 18, .10);
-  }
+  body{background:var(--ground);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:82rem;margin:0 auto;padding:var(--pad);display:flex;flex-direction:column;gap:clamp(2.5rem,5vw,4rem);}
+  .label{font-family:var(--sans);font-size:.69rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
+  .num{font-variant-numeric:tabular-nums;}
+  a{color:inherit;text-decoration-color:var(--glow);text-underline-offset:3px;}
+  a:hover{color:var(--glow);}
+  a:focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:2px;}
 
-  body {
-    background: var(--ground);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 17px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+  .masthead{display:flex;flex-direction:column;gap:1rem;border-bottom:1px solid var(--rule);padding-bottom:1.75rem;}
+  .masthead h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;font-weight:400;letter-spacing:-.015em;text-wrap:balance;margin:0;}
+  .masthead h1 em{font-style:italic;color:var(--glow);}
+  .runbar{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem;align-items:baseline;}
 
-  .wrap {
-    max-width: 78rem;
-    margin: 0 auto;
-    padding: var(--pad);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2.5rem, 5vw, 4rem);
-  }
+  .verdict{display:flex;flex-direction:column;gap:1.25rem;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--glow);padding:clamp(1.25rem,3vw,2rem);box-shadow:0 1px 2px var(--shadow);}
+  .verdict h2{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:400;line-height:1.25;margin:0;text-wrap:balance;}
+  .verdict p{margin:0;max-width:var(--measure);color:var(--ink-2);}
+  .verdict p+p{margin-top:.85rem;}
+  .verdict strong{color:var(--ink);font-weight:600;}
 
-  .label {
-    font-family: var(--sans);
-    font-size: .69rem;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
+  .tally{display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;padding-top:1.25rem;border-top:1px solid var(--rule-soft);}
+  .tally div{display:flex;flex-direction:column;gap:.15rem;}
+  .tally .fig{font-size:1.85rem;line-height:1;font-variant-numeric:tabular-nums;}
+  .tally .fig.on{color:var(--patina);} .tally .fig.off{color:var(--rust);}
 
-  .num { font-variant-numeric: tabular-nums; }
+  .sec{display:flex;flex-direction:column;gap:1.5rem;}
+  .sec>header{display:flex;flex-direction:column;gap:.45rem;}
+  .sec>header h2{font-size:clamp(1.25rem,3vw,1.65rem);font-weight:400;margin:0;line-height:1.2;}
+  .sec>header p{margin:0;max-width:var(--measure);color:var(--ink-2);font-size:.95rem;}
 
-  a { color: inherit; text-decoration-color: var(--glow); text-underline-offset: 3px; }
-  a:hover { color: var(--glow); }
-  a:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 2px; }
+  .lots{display:flex;flex-direction:column;gap:1.25rem;}
+  .lot{display:grid;grid-template-columns:80px minmax(0,1fr);gap:1.5rem;background:var(--card);border:1px solid var(--rule);padding:1.5rem;box-shadow:0 1px 2px var(--shadow);}
+  .lot.lead{border-left:3px solid var(--patina);}
+  @media(max-width:44rem){.lot{grid-template-columns:minmax(0,1fr);gap:1rem;}}
+  .plate{display:flex;align-items:flex-start;justify-content:center;padding-top:.25rem;}
+  .plate svg{width:64px;height:88px;display:block;}
+  .plate .stroke{stroke:var(--ink-3);fill:none;stroke-width:1.4;}
+  .plate .shade{fill:var(--glow);opacity:.16;stroke:var(--glow);stroke-width:1.4;}
+  .lot-body{display:flex;flex-direction:column;gap:1rem;min-width:0;}
+  .lot-head{display:flex;flex-direction:column;gap:.5rem;}
+  .lot-head h3{font-size:1.25rem;font-weight:400;line-height:1.25;margin:0;text-wrap:balance;}
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;}
+  .chip{font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .6rem;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap;}
+  .chip.tier{border-color:var(--glow);color:var(--glow);}
+  .chip.scope{border-color:var(--patina);color:var(--patina);}
+  .chip.block{border-color:var(--rust);color:var(--rust);}
+  .chip.watch{border-color:var(--amber);color:var(--amber);}
 
-  /* ---------- masthead ---------- */
+  .rail{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1rem 1.5rem;padding:1rem 0;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);}
+  .rail div{display:flex;flex-direction:column;gap:.2rem;min-width:0;}
+  .rail .v{font-size:1rem;font-variant-numeric:tabular-nums;line-height:1.3;}
+  .rail .v.muted{color:var(--ink-3);}
+  .rail .v.hi{color:var(--patina);}
+  .rail .v.lo{color:var(--rust);}
 
-  .masthead {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 1.75rem;
-  }
-  .masthead h1 {
-    font-size: clamp(2.1rem, 5.5vw, 3.4rem);
-    line-height: 1.04;
-    font-weight: 400;
-    letter-spacing: -.015em;
-    text-wrap: balance;
-    margin: 0;
-  }
-  .masthead h1 em {
-    font-style: italic;
-    color: var(--glow);
-  }
-  .runbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem 1.75rem;
-    align-items: baseline;
-  }
+  .note{margin:0;color:var(--ink-2);font-size:.95rem;max-width:var(--measure);}
+  .note+.note{margin-top:.6rem;}
 
-  /* ---------- verdict ---------- */
+  .math{font-family:var(--sans);font-size:.82rem;line-height:1.75;background:var(--card-2);border:1px solid var(--rule-soft);padding:.9rem 1.1rem;overflow-x:auto;font-variant-numeric:tabular-nums;color:var(--ink-2);}
+  .math b{color:var(--ink);font-weight:600;}
 
-  .verdict {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-left: 3px solid var(--glow);
-    padding: clamp(1.25rem, 3vw, 2rem);
-    box-shadow: 0 1px 2px var(--shadow);
-  }
-  .verdict h2 {
-    font-size: clamp(1.35rem, 3vw, 1.75rem);
-    font-weight: 400;
-    line-height: 1.25;
-    margin: 0;
-    text-wrap: balance;
-  }
-  .verdict p {
-    margin: 0;
-    max-width: var(--measure);
-    color: var(--ink-2);
-  }
-  .verdict p + p { margin-top: .85rem; }
-  .verdict strong { color: var(--ink); font-weight: 600; }
+  .scroll{overflow-x:auto;border:1px solid var(--rule);background:var(--card);}
+  table{border-collapse:collapse;width:100%;min-width:42rem;}
+  caption{text-align:left;padding:0 0 .75rem;color:var(--ink-3);font-size:.9rem;}
+  th,td{text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;font-size:.92rem;}
+  thead th{font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--rule);white-space:nowrap;}
+  tbody tr:last-child td{border-bottom:none;}
+  td.when{white-space:nowrap;font-variant-numeric:tabular-nums;}
+  td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  th.n{text-align:right;}
+  .flag{color:var(--rust);} .ok{color:var(--patina);}
+  .src{font-family:var(--sans);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);}
+  tr.dead td{color:var(--ink-3);}
 
-  .tally {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem 2.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--rule-soft);
-  }
-  .tally div { display: flex; flex-direction: column; gap: .15rem; }
-  .tally .fig {
-    font-size: 1.9rem;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-  .tally .fig.on { color: var(--patina); }
-  .tally .fig.off { color: var(--rust); }
+  .settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);}
+  .settings div{background:var(--card);padding:1rem 1.15rem;display:flex;flex-direction:column;gap:.25rem;}
+  .settings .v{font-size:1.1rem;font-variant-numeric:tabular-nums;}
 
-  /* ---------- sections ---------- */
-
-  .sec { display: flex; flex-direction: column; gap: 1.5rem; }
-  .sec > header { display: flex; flex-direction: column; gap: .45rem; }
-  .sec > header h2 {
-    font-size: clamp(1.3rem, 3vw, 1.7rem);
-    font-weight: 400;
-    margin: 0;
-    line-height: 1.2;
-  }
-  .sec > header p {
-    margin: 0;
-    max-width: var(--measure);
-    color: var(--ink-2);
-    font-size: .95rem;
-  }
-
-  /* ---------- lot cards ---------- */
-
-  .lots { display: flex; flex-direction: column; gap: 1.25rem; }
-
-  .lot {
-    display: grid;
-    grid-template-columns: 88px minmax(0, 1fr);
-    gap: 1.5rem;
-    background: var(--card);
-    border: 1px solid var(--rule);
-    padding: 1.5rem;
-    box-shadow: 0 1px 2px var(--shadow);
-  }
-  @media (max-width: 40rem) {
-    .lot { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
-  }
-
-  .plate {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: .25rem;
-  }
-  .plate svg { width: 72px; height: 96px; display: block; }
-  .plate .stroke { stroke: var(--ink-3); fill: none; stroke-width: 1.4; }
-  .plate .shade  { fill: var(--glow); opacity: .16; stroke: var(--glow); stroke-width: 1.4; }
-
-  .lot-body { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
-
-  .lot-head { display: flex; flex-direction: column; gap: .5rem; }
-  .lot-head h3 {
-    font-size: 1.3rem;
-    font-weight: 400;
-    line-height: 1.25;
-    margin: 0;
-    text-wrap: balance;
-  }
-  .chips { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
-
-  .chip {
-    font-family: var(--sans);
-    font-size: .66rem;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    padding: .28rem .6rem;
-    border: 1px solid var(--rule);
-    color: var(--ink-2);
-    white-space: nowrap;
-  }
-  .chip.tier { border-color: var(--glow); color: var(--glow); }
-  .chip.scope { border-color: var(--patina); color: var(--patina); }
-  .chip.block { border-color: var(--rust); color: var(--rust); }
-
-  .rail {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-    gap: 1rem 1.5rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--rule-soft);
-    border-bottom: 1px solid var(--rule-soft);
-  }
-  .rail div { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
-  .rail .v { font-size: 1.02rem; font-variant-numeric: tabular-nums; line-height: 1.3; }
-  .rail .v.muted { color: var(--ink-3); }
-
-  .note { margin: 0; color: var(--ink-2); font-size: .95rem; max-width: var(--measure); }
-  .note + .note { margin-top: .6rem; }
-
-  /* ---------- tables ---------- */
-
-  .scroll { overflow-x: auto; border: 1px solid var(--rule); background: var(--card); }
-  table { border-collapse: collapse; width: 100%; min-width: 40rem; }
-  caption { text-align: left; padding: 0 0 .75rem; color: var(--ink-3); font-size: .9rem; }
-  th, td {
-    text-align: left;
-    padding: .8rem 1rem;
-    border-bottom: 1px solid var(--rule-soft);
-    vertical-align: top;
-    font-size: .93rem;
-  }
-  thead th {
-    font-family: var(--sans);
-    font-size: .66rem;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    border-bottom: 1px solid var(--rule);
-    white-space: nowrap;
-  }
-  tbody tr:last-child td { border-bottom: none; }
-  td.when { white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .flag { color: var(--rust); }
-  .ok { color: var(--patina); }
-
-  /* ---------- settings ---------- */
-
-  .settings {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-  }
-  .settings div {
-    background: var(--card);
-    padding: 1rem 1.15rem;
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
-  }
-  .settings .v { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-
-  /* ---------- footer ---------- */
-
-  footer {
-    border-top: 1px solid var(--rule);
-    padding-top: 1.5rem;
-    color: var(--ink-3);
-    font-size: .88rem;
-    display: flex;
-    flex-direction: column;
-    gap: .4rem;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    a { transition: color .15s ease; }
-  }
+  footer{border-top:1px solid var(--rule);padding-top:1.5rem;color:var(--ink-3);font-size:.88rem;display:flex;flex-direction:column;gap:.4rem;}
+  @media(prefers-reduced-motion:no-preference){a{transition:color .15s ease;}}
 </style>
 
 <div class="wrap">
 
   <header class="masthead">
     <span class="label">Antique Electric Lamp Acquisition · Run 1</span>
-    <h1>Nothing to bid on yet — <em>but the gate was the problem, not the market.</em></h1>
+    <h1>One lamp worth bidding on — <em>but only well under the current bid.</em></h1>
     <div class="runbar">
       <span class="label">27 July 2026</span>
       <span class="label">Bedroom · maple dresser</span>
-      <span class="label">Amended after OV-1</span>
+      <span class="label">14 sources swept · 6 reachable</span>
     </div>
   </header>
 
   <section class="verdict">
-    <h2>Five listings verified live. Under the original gate, all five failed.</h2>
+    <h2>A Pairpoint puffy boudoir lamp in Rehoboth, Massachusetts — 30 minutes from the Rhode Island line, and it can be collected in person.</h2>
     <p>
-      The binding constraint was never price or quality. It was the <strong>size gate</strong> — an
-      18&Prime; minimum height paired with a 10&Prime; minimum shade diameter, which together excluded
-      boudoir and desk lamps entirely. That is the affordable Tier&nbsp;A supply, and the form
-      historically built for a dresser.
+      Lot 0116 at Americana Auctions, <strong>Friday 8 August, 11:00 AM EDT</strong>. Base stamped
+      <em>Pairpoint C3064</em>, 14.5&Prime; tall with an 8.5&Prime; shade, shade in perfect condition.
+      It clears the size gate, it is Tier&nbsp;A, and it is the first lot this routine has been able
+      to score.
     </p>
     <p>
-      The floors have been lowered (<strong>OV-1</strong>) and <strong>three of the five are back
-      in scope</strong>. They still cannot publish as buy candidates, because scoring requires a low
-      comp and the comp library is empty — eBay&rsquo;s sold-listing search is behind a login wall.
-      Publishing them anyway would mean inventing the denominator.
+      <strong>The scoring is the whole story.</strong> Realized prices for this form run
+      $645–$1,512, and the house takes a <strong>28% buyer&rsquo;s premium</strong>. At the current
+      $300 bid it lands near $520 and scores 1.24 — worth watching. At its own low estimate of $650
+      it lands near $1,010 and scores <strong>0.64</strong>, which is a bad buy. The estimate is
+      above what these actually fetch.
     </p>
     <p>
-      <strong>One blocker remains, and it is comps.</strong> Run&nbsp;2 leads with comp sourcing
-      before any new searching.
+      <strong>Max bid $228.</strong> That is the hammer at which it still meets the excellent-value
+      threshold. Above <strong>$329</strong> it stops being worth publishing at all. The lot is
+      already at $300 — there is roughly $29 of headroom left, and it may simply run away.
+      Register 48 hours ahead if you want the option.
     </p>
     <div class="tally">
-      <div><span class="label">Verified live</span><span class="fig num">5</span></div>
-      <div><span class="label">Back in scope</span><span class="fig num on">3</span></div>
-      <div><span class="label">Publishable</span><span class="fig num off">0</span></div>
-      <div><span class="label">Held for report</span><span class="fig num">1</span></div>
-      <div><span class="label">Rejected</span><span class="fig num">9</span></div>
+      <div><span class="label">Sources swept</span><span class="fig num">14</span></div>
+      <div><span class="label">Reachable</span><span class="fig num on">6</span></div>
+      <div><span class="label">Lots surfaced</span><span class="fig num">44</span></div>
+      <div><span class="label">Verified live</span><span class="fig num">6</span></div>
+      <div><span class="label">Scored</span><span class="fig num on">1</span></div>
+      <div><span class="label">Rejected</span><span class="fig num off">14</span></div>
     </div>
   </section>
 
+  <!-- ================= SOURCES ================= -->
   <section class="sec">
     <header>
-      <span class="label">Reinstated by OV-1</span>
-      <h2>In scope, blocked only on comps</h2>
+      <span class="label">Where this came from</span>
+      <h2>Sources swept, and what each returned</h2>
       <p>
-        Each cleared the amended size gate. All were active on 27 July; fixed-price listings move,
-        so re-verify at the top of run 2 before acting. Ordered best prospect first.
+        Nothing enters this catalog from a search result — every published lot was read on its own
+        live page. A source that cannot be fetched yields nothing regardless of its inventory, so
+        reachability is tracked as a property of the source, not as an incidental failure.
       </p>
     </header>
+    <div class="scroll">
+      <table>
+        <caption>Run 1 · 27 July 2026. &ldquo;Surfaced&rdquo; counts lots seen; &ldquo;verified&rdquo; counts pages actually read.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Source</th><th scope="col">Reach</th>
+            <th scope="col" class="n">Surfaced</th><th scope="col" class="n">Verified</th><th scope="col" class="n">Published</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/search/?keyword=pairpoint%20lamp&status=online">LiveAuctioneers</a><br><span class="src">Aggregator · many houses</span></td>
+            <td class="ok">Search + lots</td>
+            <td class="n">27</td><td class="n">1</td><td class="n">1</td>
+            <td><strong>Best source this run.</strong> Reaches Americana, Woody, Andrew Jones, Bidhaus, Jackson&rsquo;s, Mynt and others in one query. Lot pages fetch on <code>www.</code> but 403 on the <code>p1.</code> subdomain — use the canonical host.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ebay.com/sch/i.html?_nkw=handel+lamp&LH_BIN=1&_udhi=6500&_sop=10">eBay</a><br><span class="src">Fixed price + auction</span></td>
+            <td class="ok">Search + items</td>
+            <td class="n">17</td><td class="n">5</td><td class="n">3</td>
+            <td>Reliable for live listings. <strong>Sold search is login-walled</strong> and is not a comp source.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.toomeyco.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/174">Toomey &amp; Co.</a><br><span class="src">Realized prices</span></td>
+            <td class="ok">Results</td>
+            <td class="n">3</td><td class="n">3</td><td class="n">—</td>
+            <td><strong>Solved the comp problem.</strong> Publishes realized prices openly, with dates and estimates. Three dated Pairpoint puffy boudoir sales.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ragoarts.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/172">Rago Auctions</a><br><span class="src">Realized prices</span></td>
+            <td class="ok">Results</td>
+            <td class="n">1</td><td class="n">1</td><td class="n">—</td>
+            <td>Same — open realized prices with dates. Pair with Toomey as the standing comp source.</td>
+          </tr>
+          <tr>
+            <td><a href="https://woodyauction.com/auctions/">Woody Auction</a><br><span class="src">Douglass, KS</span></td>
+            <td class="ok">Schedule + terms</td>
+            <td class="n">3</td><td class="n">0</td><td class="n">0</td>
+            <td>Own site fetches. <strong>Fee structure matters:</strong> 15% premium bidding direct, versus 20% + 3.99% through LiveAuctioneers, versus <em>zero</em> in person. Catalog for 22 Aug not yet posted.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.1stdibs.com/buy/handel-table-lamps/">1stDibs</a><br><span class="src">Calibration only</span></td>
+            <td class="ok">Listings</td>
+            <td class="n">3</td><td class="n">0</td><td class="n">0</td>
+            <td>Retail asks, not comps. Useful only as a ceiling: average Handel ask $3,000, lowest $715.</td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://www.invaluable.com/search?query=handel%20lamp&upcoming=true">Invaluable</a></td>
+            <td class="flag">403</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>Blocked. Would duplicate much of LiveAuctioneers&rsquo; coverage.</td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://www.fontainesauction.com/online-auctions/">Fontaine&rsquo;s</a></td>
+            <td class="flag">403</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>Probably the richest Tier&nbsp;A source in range — its June sale carried 200+ Tiffany lots. Invisible to this routine. <strong>Worth solving.</strong></td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://www.etsy.com/search?q=antique%20handel%20pairpoint%20lamp">Etsy</a></td>
+            <td class="flag">403</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>Blocked to automated fetch.</td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://www.rubylane.com/search?q=handel+lamp">Ruby Lane</a></td>
+            <td class="flag">503</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>Service unavailable this run. Retry next run before writing it off.</td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://www.ebth.com/search?q=antique+lamp">EBTH</a></td>
+            <td class="flag">JS only</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>Returns navigation shell without listings.</td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://shopgoodwill.com/">ShopGoodwill</a></td>
+            <td class="flag">JS only</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>Same — no listings in fetched markup.</td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://live.thomastonauction.com/auctions/upcoming-auctions/">Thomaston Place</a><br><span class="src">Thomaston, ME</span></td>
+            <td class="flag">403 / conflict</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>House calendar advertises Summer Grandeur 28–30 Aug with a posted catalog; the bidding subdomain 403s and two aggregators report no upcoming sales. Unresolved.</td>
+          </tr>
+          <tr class="dead">
+            <td><a href="https://www.bidsquare.com/auction-house/thomaston-place">Bidsquare</a></td>
+            <td class="ok">House pages</td><td class="n">0</td><td class="n">0</td><td class="n">0</td>
+            <td>Reachable but returned no matching upcoming lots.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
+  <!-- ================= SCORED ================= -->
+  <section class="sec">
+    <header>
+      <span class="label">Scored against realized comps</span>
+      <h2>Buy candidate</h2>
+    </header>
     <div class="lots">
-
-      <article class="lot">
+      <article class="lot lead">
         <div class="plate" aria-hidden="true">
           <svg viewBox="0 0 72 96">
-            <path class="shade" d="M14 40 L58 40 L50 14 L22 14 Z"/>
-            <path class="stroke" d="M36 40 V74"/>
+            <path class="shade" d="M14 42 q22 -26 44 0 q-22 10 -44 0 Z"/>
+            <path class="stroke" d="M36 44 V72"/>
             <path class="stroke" d="M22 82 h28 a4 4 0 0 0 -4 -8 h-20 a4 4 0 0 0 -4 8 Z"/>
           </svg>
         </div>
         <div class="lot-body">
           <div class="lot-head">
-            <h3>Handel reverse-painted floral boudoir lamp, c.&thinsp;1900–19</h3>
+            <h3>Pairpoint puffy boudoir lamp, c.&thinsp;1920s — Lot 0116</h3>
             <div class="chips">
               <span class="chip tier">Tier A</span>
-              <span class="chip scope">In scope</span>
-              <span class="chip block">No comps</span>
-              <span class="chip">Springfield, MA</span>
+              <span class="chip watch">Watch · 1.24</span>
+              <span class="chip scope">Local pickup</span>
+              <span class="chip">Rehoboth, MA</span>
+              <span class="chip">Closes 8 Aug, 11:00 ET</span>
             </div>
           </div>
           <div class="rail">
-            <div><span class="label">Ask</span><span class="v">$1,200 <span class="muted">BIN / OBO</span></span></div>
-            <div><span class="label">Height</span><span class="v">14&Prime;</span></div>
-            <div><span class="label">Shade dia.</span><span class="v muted">Not stated</span></div>
-            <div><span class="label">Value score</span><span class="v muted">— no comps</span></div>
+            <div><span class="label">Current bid</span><span class="v">$300</span></div>
+            <div><span class="label">House estimate</span><span class="v muted">$650–850</span></div>
+            <div><span class="label">Size</span><span class="v">14.5&Prime; · shade 8.5&Prime;</span></div>
+            <div><span class="label">Comp range</span><span class="v">$645–1,512</span></div>
+            <div><span class="label">Value score</span><span class="v hi">1.24 at $300</span></div>
+            <div><span class="label">Max bid</span><span class="v hi">$228</span></div>
           </div>
+
+          <div class="math">
+            <b>Landed cost</b> = hammer + 28% premium + 3.99% platform + 6.25% MA tax + $0 shipping (pickup) + $100 rewiring<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;≈ hammer × 1.40 + $100<br><br>
+            at $300 hammer → 300 + 84 + 12 + 24 + 0 + 100 = <b>$520</b> &nbsp;·&nbsp; score 645 ÷ 520 = <b>1.24</b> — watch<br>
+            at $650 hammer → 650 + 182 + 26 + 52 + 0 + 100 = <b>$1,010</b> &nbsp;·&nbsp; score 645 ÷ 1,010 = <b>0.64</b> — do not buy<br><br>
+            <b>Max bid</b> for score ≥ 1.54 → landed ≤ 645 ÷ 1.54 = $419 → hammer ≤ <b>$228</b><br>
+            <b>Ceiling</b> for score ≥ 1.15 → landed ≤ 645 ÷ 1.15 = $561 → hammer ≤ <b>$329</b>
+          </div>
+
           <p class="note">
-            <strong>Best prospect of the run.</strong> A Tier&nbsp;A maker at just over half the
-            working budget, close enough to consider collecting in person — which removes the
-            $100–400 art-glass packing load and the breakage risk that comes with it. Seller has
-            traded on the platform since 2000 at 100%.
+            <strong>Condition passes.</strong> Shade perfect. Base shows light wear to patina, which
+            is preferred over a polished one. Working, but the original cord should be rewired —
+            expected, and priced in above. Base stamped <em>Pairpoint C3064</em>, which is the right
+            mark in the right place.
           </p>
           <p class="note">
-            Clears the 14&Prime; single-lamp floor exactly. Reverse-painted decoration must be
-            confirmed on the <em>interior</em> surface; exterior painting is a reproduction tell.
-            <a href="https://www.ebay.com/itm/287463888686">View listing &rarr;</a>
+            <strong>Authenticity: good.</strong> &ldquo;Blown-out floral designs on latticework&rdquo;
+            describes a genuine moulded puffy, not a painted imitation of one. The stamped model
+            number on the base is consistent with factory work. Not yet confirmed: whether shade and
+            base are original to each other — worth asking, since a boudoir lamp of this value is a
+            common candidate for marriage.
+          </p>
+          <p class="note">
+            <strong>Why the estimate misleads.</strong> Three of the four comparable sales landed
+            under $800 against estimates as high as $2,500. Houses estimate puffies optimistically.
+            Bid the comps, not the estimate.
+            <a href="https://www.liveauctioneers.com/item/237209423_pairpoint-puffy-boudoir-lamp-rehoboth-ma">View lot &rarr;</a>
+          </p>
+          <p class="note">
+            <strong>Action:</strong> register to bid by <strong>6 August</strong> · leave an absentee
+            bid at $228 · do not chase it in the room.
           </p>
         </div>
       </article>
-
-      <article class="lot">
-        <div class="plate" aria-hidden="true">
-          <svg viewBox="0 0 72 96">
-            <path class="shade" d="M12 34 L52 22 L58 40 L18 52 Z"/>
-            <path class="stroke" d="M40 44 L40 72"/>
-            <path class="stroke" d="M26 78 h28"/>
-            <path class="stroke" d="M40 72 v6"/>
-          </svg>
-        </div>
-        <div class="lot-body">
-          <div class="lot-head">
-            <h3>Handel Art Deco &ldquo;Sunset Palm&rdquo; six-panel desk lamp</h3>
-            <div class="chips">
-              <span class="chip tier">Tier A</span>
-              <span class="chip scope">In scope</span>
-              <span class="chip block">No comps</span>
-              <span class="chip">Toledo, OH</span>
-            </div>
-          </div>
-          <div class="rail">
-            <div><span class="label">Ask</span><span class="v">$2,600 <span class="muted">BIN</span></span></div>
-            <div><span class="label">Height</span><span class="v">14–15.5&Prime;</span></div>
-            <div><span class="label">Shade</span><span class="v">8.25&Prime; &times; 4&Prime;</span></div>
-            <div><span class="label">Value score</span><span class="v muted">— no comps</span></div>
-          </div>
-          <p class="note">
-            Clears both amended floors. Dimensions come from two independent auction records for the
-            form, not from the listing, which omits them — so measurements need confirming directly
-            with the seller before any offer.
-          </p>
-          <p class="note">
-            Sits at the top of the working budget <em>before</em> fees, and it is out of region, so
-            shipping applies on top. Established dealer, 9.1k sales.
-            <a href="https://www.ebay.com/itm/198406925652">View listing &rarr;</a>
-          </p>
-        </div>
-      </article>
-
-      <article class="lot">
-        <div class="plate" aria-hidden="true">
-          <svg viewBox="0 0 72 96">
-            <path class="shade" d="M16 42 a20 14 0 0 1 40 0 Z"/>
-            <path class="stroke" d="M36 42 V70"/>
-            <path class="stroke" d="M28 70 q8 6 16 0"/>
-            <path class="stroke" d="M24 82 h24 a3 3 0 0 0 -3 -8 h-18 a3 3 0 0 0 -3 8 Z"/>
-          </svg>
-        </div>
-        <div class="lot-body">
-          <div class="lot-head">
-            <h3>Daum Nancy green glass table lamp, marked</h3>
-            <div class="chips">
-              <span class="chip tier">Tier D</span>
-              <span class="chip scope">In scope</span>
-              <span class="chip block">Unverified</span>
-            </div>
-          </div>
-          <div class="rail">
-            <div><span class="label">Ask</span><span class="v">$2,900</span></div>
-            <div><span class="label">Height</span><span class="v">14&Prime;</span></div>
-            <div><span class="label">Shade dia.</span><span class="v">8&Prime;</span></div>
-            <div><span class="label">Value score</span><span class="v muted">— no comps</span></div>
-          </div>
-          <p class="note">
-            Tier&nbsp;D is the highest-weight lane in the brief. This one was rejected on its title
-            alone under the old gate and <strong>was never fetched</strong> — so it is a lead, not a
-            verified lot, and counts as nothing until the live page is read in full.
-          </p>
-          <p class="note">
-            Dimensions above are taken from the listing title and need confirming on the page.
-            <a href="https://www.ebay.com/itm/147344358752">View listing &rarr;</a>
-          </p>
-        </div>
-      </article>
-
     </div>
   </section>
 
+  <!-- ================= COMPS ================= -->
+  <section class="sec">
+    <header>
+      <span class="label">Evidence</span>
+      <h2>Comp library — Pairpoint puffy boudoir</h2>
+      <p>Four realized sales inside three years, same maker and form. This is what the score above divides by.</p>
+    </header>
+    <div class="scroll">
+      <table>
+        <thead><tr><th scope="col">Lot</th><th scope="col">House</th><th scope="col">Date</th><th scope="col" class="n">Estimate</th><th scope="col" class="n">Realized</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.toomeyco.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/174">Puffy boudoir lamp</a></td><td>Toomey &amp; Co.</td><td class="when">31 Oct 2024</td><td class="n">$1,000–1,500</td><td class="n"><strong>$645</strong> <span class="src">sold</span></td></tr>
+          <tr><td><a href="https://www.toomeyco.com/auctions/2024/03/art-nouveau-art-deco-glass-lighting/207">Puffy boudoir, nasturtiums</a></td><td>Toomey &amp; Co.</td><td class="when">21 Mar 2024</td><td class="n">$1,500–2,500</td><td class="n"><strong>$693</strong> <span class="src">sold</span></td></tr>
+          <tr><td><a href="https://www.ragoarts.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/172">Puffy boudoir, roses</a></td><td>Rago</td><td class="when">31 Oct 2024</td><td class="n">$800–1,200</td><td class="n"><strong>$786</strong> <span class="src">sold</span></td></tr>
+          <tr><td><a href="https://www.toomeyco.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/175">Puffy boudoir, apple blossoms</a></td><td>Toomey &amp; Co.</td><td class="when">31 Oct 2024</td><td class="n">$800–1,200</td><td class="n"><strong>$1,512</strong> <span class="src">sold</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      Low comp <strong>$645</strong> · high <strong>$1,512</strong> · three of four under $800.
+      Estimates overshot realized prices in three of the four sales, by as much as 3&times;.
+    </p>
+  </section>
+
+  <!-- ================= IN SCOPE, THIN ================= -->
+  <section class="sec">
+    <header>
+      <span class="label">In scope · comps thin</span>
+      <h2>Tracked, not yet scoreable</h2>
+      <p>These clear the size gate and the scope rules but lack three dated realized sales for their specific form. Rather than invent a denominator, they are held.</p>
+    </header>
+    <div class="scroll">
+      <table>
+        <thead><tr><th scope="col">Lot</th><th scope="col">Tier</th><th scope="col">Source · house</th><th scope="col">Closes</th><th scope="col" class="n">Bid / ask</th><th scope="col">Size</th><th scope="col">Standing</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/235936155_table-lamp-pairpoint-novelty-puffy-nautilus-shell-douglass-ks">Pairpoint &ldquo;Puffy&rdquo; Nautilus Shell table lamp</a></td>
+            <td>A</td><td>LiveAuctioneers · <a href="https://woodyauction.com/auctions/">Woody</a></td><td class="when">22 Aug 2026</td>
+            <td class="n">$450<br><span class="src">est 2,500–4,500</span></td><td>19&Prime; · 12&Prime;</td>
+            <td>Scarcer form than the floral puffies, so the comp set above does not transfer. <strong>Bid direct at 15% rather than 20%+3.99% through the platform</strong> — on a $2,500 hammer that difference is about $220.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/235936413_table-lamp-pairpoint-base-reverse-painted-douglass-ks">Table lamp, Pairpoint base, reverse painted</a></td>
+            <td>A</td><td>LiveAuctioneers · <a href="https://woodyauction.com/auctions/">Woody</a></td><td class="when">22 Aug 2026</td>
+            <td class="n">$225<br><span class="src">est 1,000–1,600</span></td><td>20&Prime; · 12&Prime;</td>
+            <td><span class="flag">Title names the base only.</span> &ldquo;Pairpoint base&rdquo; with an unattributed shade is the classic marriage phrasing. Needs the shade&rsquo;s mark confirmed before it can be treated as a Pairpoint lamp.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ebay.com/itm/287463888686">Handel reverse-painted floral boudoir lamp</a></td>
+            <td>A</td><td>eBay · Springfield, MA</td><td class="when">Fixed price</td>
+            <td class="n">$1,200</td><td>14&Prime; · n/s</td>
+            <td>Clears the height floor exactly; shade diameter still unstated. Massachusetts, so pickup may be possible. Handel boudoir comps not yet gathered.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ebay.com/itm/198406925652">Handel &ldquo;Sunset Palm&rdquo; six-panel desk lamp</a></td>
+            <td>A</td><td>eBay · Toledo, OH</td><td class="when">Fixed price</td>
+            <td class="n">$2,600</td><td>14–15.5&Prime; · 8.25&Prime;</td>
+            <td>Dimensions come from auction records for the form, not the listing, which omits them. Top of budget before fees, and out of region.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ebay.com/itm/147344358752">Daum Nancy green glass table lamp</a></td>
+            <td>D</td><td>eBay</td><td class="when">Fixed price</td>
+            <td class="n">$2,900</td><td>14&Prime; · 8&Prime;</td>
+            <td>Highest-weight tier. <strong>Never fetched</strong> — surfaced by title only, so it counts as a lead, not a verified lot.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/236713062_vintage-leaded-glass-table-lamp-handel-base-cedar-falls-ia">Leaded glass table lamp, Handel base</a></td>
+            <td>B</td><td>LiveAuctioneers · Jackson&rsquo;s</td><td class="when">12 Aug 2026</td>
+            <td class="n">$800<br><span class="src">est 1,000–1,500</span></td><td>Not stated</td>
+            <td><span class="flag">Base named, shade not.</span> Same marriage phrasing. Dimensions absent — cannot be size-gated as listed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= CONDITION REPORT ================= -->
   <section class="sec">
     <header>
       <span class="label">Held, not discarded</span>
       <h2>Condition report requested</h2>
-      <p>Photos too poor to judge. Bad photos are where value hides, so these are held rather than thrown away.</p>
+      <p>Photos too poor to judge. Bad photos are where value hides.</p>
     </header>
     <article class="lot">
       <div class="plate" aria-hidden="true">
@@ -509,28 +434,26 @@
         <div class="lot-head">
           <h3>&ldquo;Rare 1900s Roycroft hammered copper table lamp, twin stem&rdquo;</h3>
           <div class="chips">
-            <span class="chip tier">Tier C</span>
-            <span class="chip">$800 BIN / OBO</span>
-            <span class="chip">El Segundo, CA</span>
+            <span class="chip tier">Tier C</span><span class="chip">$800 BIN / OBO</span><span class="chip">El Segundo, CA</span>
           </div>
         </div>
         <p class="note">
           Listed as an original Roycroft rather than &ldquo;style&rdquo;, so it passes the keyword
-          filter — but the page gives <strong>no dimensions, no orb-and-cross mark, and nothing at
-          all about the shade</strong>. The era field says 1920s while the title says 1900s. At $800
-          it would be far under a genuine example, which cuts both ways.
+          filter — but the page gives <strong>no dimensions, no orb-and-cross mark, and nothing about
+          the shade</strong>. The era field says 1920s while the title says 1900s. At $800 it would
+          be far under a genuine example, which cuts both ways.
         </p>
         <p class="note">
-          <strong>Ask the seller for:</strong> overall height and shade diameter; a close photograph
-          of the base underside and rim showing any mark; confirmation the shade is present and
-          original; and the packing plan — $16.65 ground shipping on a claimed rare Roycroft is
-          itself a warning sign.
+          <strong>Ask for:</strong> height and shade diameter · a close photograph of the base
+          underside and rim showing any mark · confirmation the shade is present and original · the
+          packing plan, since $16.65 ground shipping on a claimed rare Roycroft is itself a warning.
           <a href="https://www.ebay.com/itm/188411049658">View listing &rarr;</a>
         </p>
       </div>
     </article>
   </section>
 
+  <!-- ================= WATCHLIST ================= -->
   <section class="sec">
     <header>
       <span class="label">Catalogs not yet posted</span>
@@ -538,107 +461,156 @@
     </header>
     <div class="scroll">
       <table>
-        <caption>Sales worth tracking, with the date to look again.</caption>
-        <thead>
-          <tr><th scope="col">House</th><th scope="col">Sale</th><th scope="col">Date</th><th scope="col">Standing</th><th scope="col">Check back</th></tr>
-        </thead>
+        <thead><tr><th scope="col">House</th><th scope="col">Sale</th><th scope="col">Date</th><th scope="col">Standing</th><th scope="col">Check back</th></tr></thead>
         <tbody>
           <tr>
-            <td>Woody Auction<br><span class="label">Douglass, KS</span></td>
-            <td>Art Glass</td>
-            <td class="when">22 Aug 2026</td>
-            <td>Confirmed on the house site; catalog not yet posted. Premium unpublished — call (316) 747-2694.</td>
+            <td><a href="https://woodyauction.com/auctions/">Woody Auction</a><br><span class="src">Douglass, KS</span></td>
+            <td>Art Glass · 340+ lots</td><td class="when">22 Aug 2026</td>
+            <td>Confirmed, 9:30 CT. Two Pairpoint lots already visible through LiveAuctioneers. <strong>Premium is 15% direct, 20% + 3.99% via platform, 0% in person.</strong> Full catalog not yet posted — <a href="https://bid.woodyauction.com/">bid.woodyauction.com</a> · (316) 747-2694.</td>
             <td class="when">1 Aug</td>
           </tr>
           <tr>
-            <td>Thomaston Place<br><span class="label">Thomaston, ME</span></td>
-            <td>Summer Grandeur</td>
-            <td class="when">28–30 Aug 2026</td>
-            <td><span class="flag">Sources disagree.</span> House calendar says the catalog is posted; two aggregators report no upcoming sales at all. Top geographic priority — worth resolving by phone, (207) 354-8141.</td>
+            <td><a href="https://www.liveauctioneers.com/auctioneer/5847/americana-auctions/">Americana Auctions</a><br><span class="src">Rehoboth, MA</span></td>
+            <td>Summer Estates</td><td class="when">8 Aug 2026</td>
+            <td>Carries the scored lot above. <strong>New England, local pickup, 28% premium.</strong> Worth reading the rest of the catalog for other lighting. <a href="https://www.americana-auction.com/">americana-auction.com</a> · (508) 771-1722.</td>
+            <td class="when"><strong>Now</strong></td>
+          </tr>
+          <tr>
+            <td><a href="https://www.thomastonauction.com/calendar">Thomaston Place</a><br><span class="src">Thomaston, ME</span></td>
+            <td>Summer Grandeur</td><td class="when">28–30 Aug 2026</td>
+            <td><span class="flag">Sources disagree.</span> House calendar says the catalog is posted; the bidding subdomain 403s and two aggregators report no upcoming sales. Top geographic priority — resolve by phone, (207) 354-8141.</td>
             <td class="when">3 Aug</td>
           </tr>
           <tr>
-            <td>Woody Auction</td>
-            <td>Art Glass</td>
-            <td class="when">17 Oct 2026</td>
-            <td>Confirmed, catalog not posted.</td>
-            <td class="when">20 Sep</td>
+            <td><a href="https://www.liveauctioneers.com/auctioneer/654/woody-auction-llc/">Woody Auction</a></td>
+            <td>Art Glass</td><td class="when">17 Oct 2026</td>
+            <td>Confirmed, catalog not posted.</td><td class="when">20 Sep</td>
           </tr>
           <tr>
-            <td>Thomaston Place</td>
-            <td>Autumn Majestic</td>
-            <td class="when">13–15 Nov 2026</td>
-            <td>Catalog not posted.</td>
-            <td class="when">15 Oct</td>
+            <td><a href="https://www.thomastonauction.com/calendar">Thomaston Place</a></td>
+            <td>Autumn Majestic</td><td class="when">13–15 Nov 2026</td>
+            <td>Catalog not posted.</td><td class="when">15 Oct</td>
           </tr>
           <tr>
-            <td>Fontaine&rsquo;s<br><span class="label">Pittsfield, MA</span></td>
-            <td>—</td>
-            <td class="when">—</td>
-            <td><span class="flag">Site blocks access.</span> Probably the richest Tier&nbsp;A source in range — its June sale carried 200+ Tiffany lots and a Handel &ldquo;Poppy&rdquo; — and it is currently invisible to this routine. Try the Invaluable house page instead.</td>
+            <td><a href="https://www.fontainesauction.com/">Fontaine&rsquo;s</a><br><span class="src">Pittsfield, MA</span></td>
+            <td>—</td><td class="when">—</td>
+            <td><span class="flag">Site blocks access (403).</span> Probably the richest Tier&nbsp;A source in range — the June sale carried 200+ Tiffany lots and a Handel &ldquo;Poppy.&rdquo; Try the <a href="https://www.invaluable.com/auction-house/fontaine's-auction-gallery-k9ogpeh0q1">Invaluable house page</a> or call (413) 448-8922.</td>
             <td class="when">Run 2</td>
           </tr>
           <tr>
-            <td>Bruneau &amp; Co.<br><span class="label">Cranston, RI</span></td>
-            <td>—</td>
-            <td class="when">—</td>
-            <td>No upcoming sales listed anywhere this run.</td>
-            <td class="when">Run 3</td>
+            <td><a href="https://bidlive.bruneauandco.com/">Bruneau &amp; Co.</a><br><span class="src">Cranston, RI</span></td>
+            <td>—</td><td class="when">—</td>
+            <td>No upcoming sales listed on any aggregator this run.</td><td class="when">Run 3</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
+  <!-- ================= REJECTED ================= -->
   <section class="sec">
     <header>
       <span class="label">Rejected this run</span>
-      <h2>What was turned down, and why</h2>
+      <h2>Turned down, and why</h2>
+      <p>Every rejection links to its listing, so a call can be reversed on inspection rather than taken on trust.</p>
     </header>
     <div class="scroll">
       <table>
-        <thead>
-          <tr><th scope="col">Item</th><th scope="col">Ask</th><th scope="col">Reason</th></tr>
-        </thead>
+        <thead><tr><th scope="col">Lot</th><th scope="col">Source</th><th scope="col" class="n">Price</th><th scope="col">Reason</th></tr></thead>
         <tbody>
           <tr>
-            <td>Muller Frères Lunéville, cloud glass shade<br><span class="label">Kaunas, Lithuania</span></td>
-            <td class="when">$3,250</td>
-            <td><strong>Authenticity.</strong> $3,250 of art glass offered with $16.99 economy international shipping — nobody insures and professionally packs real cameo glass at that price. No dimensions, no signature photograph, thumbnails only. Compounded by the known 1980s <em>Muller Fres</em> reproductions, which copy the correct signature style with different letterforms.</td>
+            <td><a href="https://www.liveauctioneers.com/item/236414948_a-handel-reverse-painted-glass-blue-peacock-table-lamp-on-associated-base-los-angeles-ca">Handel reverse-painted blue peacock table lamp</a></td>
+            <td>LiveAuctioneers · Andrew Jones</td><td class="n">$200<br><span class="src">closes 2 days</span></td>
+            <td><strong>Marriage, disclosed.</strong> Title says &ldquo;on associated base.&rdquo; Fails the completeness gate, which requires the shade to be plausibly original to the base. Honest of the house to say so.</td>
           </tr>
           <tr>
-            <td>Heintz copper desk lamp, Silvercrest</td>
-            <td class="when">$699</td>
-            <td><strong>Size — still fails under OV-1.</strong> At 11&Prime; it is an inch under even the 12&Prime; pair floor. This is the case the gate is correctly catching.</td>
+            <td><a href="https://www.liveauctioneers.com/item/236414815_a-handel-teroca-leaded-slag-glass-cattail-table-lamp-on-later-associated-base-los-angeles-ca">Handel Teroca cattail table lamp</a></td>
+            <td>LiveAuctioneers · Andrew Jones</td><td class="n">$550<br><span class="src">closes 2 days</span></td>
+            <td><strong>Marriage.</strong> &ldquo;On later associated base&rdquo; — explicit.</td>
           </tr>
           <tr>
-            <td>Gallé cameo glass table lamps &times;2</td>
-            <td class="when">$169 · $400</td>
+            <td><a href="https://www.liveauctioneers.com/item/236414796_a-handel-teroca-leaded-slag-glass-bamboo-leaf-table-lamp-on-later-associated-base-los-angeles-ca">Handel Teroca bamboo leaf table lamp</a></td>
+            <td>LiveAuctioneers · Andrew Jones</td><td class="n">$450<br><span class="src">closes 2 days</span></td>
+            <td><strong>Marriage.</strong> &ldquo;On later associated base.&rdquo;</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/236655448_antique-art-nouveau-slag-glass-table-lamp-in-the-manner-of-handel-circa-1920s-south-bend-in">Slag glass table lamp &ldquo;in the manner of Handel&rdquo;</a></td>
+            <td>LiveAuctioneers · Liberty &amp; 33rd</td><td class="n">$300</td>
+            <td>&ldquo;In the manner of&rdquo; is a reproduction marker and is negative-keyworded.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/236765548_handel-era-vintage-12-panel-curved-slag-glass-tulip-lamp-shade-2-color-slag-glass-saugerties-ny">&ldquo;Handel era&rdquo; 12-panel slag glass shade</a></td>
+            <td>LiveAuctioneers · Deer Ridge Farm</td><td class="n">$15</td>
+            <td><strong>Shade only</strong> — out of scope. &ldquo;Handel era&rdquo; is not an attribution. The $100–$10,000 estimate range is meaningless.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/236414921_ten-assorted-reverse-painted-puffy-glass-and-mixed-metal-boudoir-lamps-pairpoint-and-others-los-angeles-ca">Ten assorted puffy boudoir lamps, Pairpoint and others</a></td>
+            <td>LiveAuctioneers · Andrew Jones</td><td class="n">$140</td>
+            <td>Group lot, &ldquo;and others,&rdquo; no per-lamp condition. Effectively a parts lot — out of scope, though the price per lamp is a useful comp signal.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/237042441_assembled-early-20th-century-lamp-bases-handel-plus-cincinnati-oh">Assembled early 20th c. lamp bases, Handel plus</a></td>
+            <td>LiveAuctioneers · Main Auction</td><td class="n">$70</td>
+            <td><strong>Bases only</strong> — out of scope.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/236511560_pairpoint-tiffany-style-poppy-table-lamp-antique-bronze-new-york-ny">Pairpoint &ldquo;Tiffany style&rdquo; poppy table lamp</a></td>
+            <td>LiveAuctioneers · Bidhaus</td><td class="n">est $32,175+</td>
+            <td>&ldquo;Style&rdquo; in the title, and the estimate is five times the walk-away.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/236500513_art-nouveau-handel-bronze-peacock-floor-lamp-signed-numbered-new-york-ny">Handel bronze peacock floor lamp</a></td>
+            <td>LiveAuctioneers · Bidhaus</td><td class="n">est $21,307+</td>
+            <td><strong>Floor lamp</strong> — out of scope, and far above the walk-away.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/235936193_boudoir-lamp-signed-daum-nancy-french-cameo-art-glass-douglass-ks">Boudoir lamp, signed Daum Nancy</a></td>
+            <td>LiveAuctioneers · Woody</td><td class="n">$650<br><span class="src">est 1,500–3,500</span></td>
+            <td><strong>Shade too small.</strong> 14.25&Prime; tall but a 5.5&Prime; shade — under the 8&Prime; single floor and under even the 6&Prime; pair floor. Genuinely tempting on maker and price; the gate holds.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.liveauctioneers.com/item/236428304_daum-nancy-lamp-los-angeles-ca">Daum Nancy cameo and wrought iron lamp</a></td>
+            <td>LiveAuctioneers · Louvre Antique</td><td class="n">$5,000</td>
+            <td>5.5&Prime; shade — under the floor. Also already near the stretch ceiling before a 28% premium.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ebay.com/itm/287392282000">Muller Frères Lunéville, cloud glass shade</a></td>
+            <td>eBay · Kaunas, Lithuania</td><td class="n">$3,250</td>
+            <td><strong>Authenticity.</strong> $3,250 of art glass with $16.99 economy international shipping — nobody insures and packs real cameo glass at that price. No dimensions, no signature photograph. Compounded by the 1980s <em>Muller Fres</em> reproductions that copy the correct signature with different letterforms.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ebay.com/itm/318560724187">Heintz copper desk lamp, Silvercrest</a></td>
+            <td>eBay · Swedesboro, NJ</td><td class="n">$699</td>
+            <td>11&Prime; — an inch under even the 12&Prime; pair floor. The gate correctly catching accessory scale.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.ebay.com/itm/158110107944">Gallé cameo glass table lamps &times;2</a></td>
+            <td>eBay</td><td class="n">$169 · $400</td>
             <td>Two orders of magnitude below any genuine Gallé. Reproductions.</td>
           </tr>
           <tr>
-            <td>Edgar Brandt school floor lamp, Daum shade</td>
-            <td class="when">$3,500</td>
-            <td>Floor lamp — outside the brief.</td>
+            <td><a href="https://www.ebay.com/itm/287399504164">Edgar Brandt school floor lamp, Daum shade</a></td>
+            <td>eBay</td><td class="n">$3,500</td>
+            <td>Floor lamp — out of scope.</td>
           </tr>
           <tr>
-            <td>&ldquo;Dirk van Erp <em>style</em>&rdquo; copper &amp; mica &times;5</td>
-            <td class="when">$350–750</td>
-            <td>&ldquo;Style&rdquo; is a reproduction marker and is negative-keyworded.</td>
+            <td><a href="https://www.ebay.com/sch/i.html?_nkw=dirk+van+erp+style+copper+mica+lamp">&ldquo;Dirk van Erp <em>style</em>&rdquo; copper &amp; mica &times;5</a></td>
+            <td>eBay</td><td class="n">$350–750</td>
+            <td>&ldquo;Style&rdquo; — reproduction marker, negative-keyworded.</td>
           </tr>
           <tr>
-            <td>Mica Lamp Company &times;5</td>
-            <td class="when">$399–1,795</td>
-            <td>Modern maker, founded in the 1970s–80s. Post-1945.</td>
+            <td><a href="https://www.ebay.com/sch/i.html?_nkw=mica+lamp+company+copper">Mica Lamp Company &times;5</a></td>
+            <td>eBay</td><td class="n">$399–1,795</td>
+            <td>Modern maker, founded 1970s–80s. Post-1945.</td>
           </tr>
           <tr>
-            <td>&ldquo;Reverse-painted scenic shade <em>with Handel base</em>&rdquo;</td>
-            <td class="when">$750</td>
-            <td>The title concedes the marriage — a shade of unstated make wed to a Handel base.</td>
+            <td><a href="https://www.ebay.com/itm/206442735803">&ldquo;Reverse-painted scenic shade <em>with Handel base</em>&rdquo;</a></td>
+            <td>eBay</td><td class="n">$750</td>
+            <td>The title concedes the marriage — a shade of unstated make on a Handel base.</td>
           </tr>
           <tr>
-            <td>&ldquo;Handel mission slag / reverse-painted&rdquo;</td>
-            <td class="when">$350</td>
+            <td><a href="https://www.ebay.com/itm/306936779336">&ldquo;Handel mission slag / reverse painted&rdquo;</a></td>
+            <td>eBay</td><td class="n">$350</td>
             <td>Price incoherent for a genuine Handel, and the title conflates slag and reverse-painted, which are different constructions.</td>
           </tr>
         </tbody>
@@ -646,10 +618,11 @@
     </div>
   </section>
 
+  <!-- ================= SETTINGS ================= -->
   <section class="sec">
     <header>
       <span class="label">In force</span>
-      <h2>Settings this run</h2>
+      <h2>Settings</h2>
     </header>
     <div class="settings">
       <div><span class="label">Working budget</span><span class="v">$2,000</span></div>
@@ -664,9 +637,9 @@
   </section>
 
   <footer>
-    <p>Thumbnails are drawn silhouettes indicating lamp form, not photographs of the lots. Every listing above was read on its live page; nothing enters this catalog from a search snippet.</p>
-    <p>Buy candidates are rebuilt every run from live-verified data. Sold prices are valuation evidence only and never appear as candidates.</p>
-    <p>Run 1 · verified live 27 July 2026 · amended the same day under OV-1.</p>
+    <p>Thumbnails are drawn silhouettes indicating lamp form, not photographs of the lots.</p>
+    <p>Every published lot was read on its live page. Sold prices are valuation evidence and never appear as candidates.</p>
+    <p>Run 1 · 14 sources swept, 6 reachable · verified live 27 July 2026.</p>
   </footer>
 
 </div>

@@ -15,13 +15,13 @@ every purchase decision stays with the owner.
 | File | What it is |
 |---|---|
 | **`ROUTINE.md`** | The routine instruction. The authoritative spec — v1.2, revised from run 1. |
-| **`LAMP-GUIDE.md`** | Persistent expertise. **Amend, never rewrite.** Read first every run. Maker marks, authenticity red flags, channel ratings, search strings, comp library, lessons. |
-| **`LAMP-CATALOG.md`** | Buy candidates. **Rebuilt every run** from live-verified data. Source of record. |
+| **`LAMP-GUIDE.html`** | Persistent expertise. **Amend, never rewrite.** Read first every run. Maker marks, authenticity red flags, channel ratings, search strings, comp library, lessons. |
+| **`LAMP-CATALOG.html`** | Buy candidates. **Rebuilt every run** from live-verified data. Source of record. |
 | **`LAMP-CATALOG.html`** | The catalog as a published page — the preferred way to read a run. |
 | **`CLAUDE.md`** | Operating notes for the agent: standing instructions, environment quirks. |
 
 The routine prompt itself lives in the scheduler and cannot be edited from inside a run.
-Owner-approved amendments are recorded in **`LAMP-GUIDE.md` §0 "Active overrides"** and
+Owner-approved amendments are recorded in **`LAMP-GUIDE.html` §0 "Active overrides"** and
 supersede the routine text they name. `ROUTINE.md` folds those overrides in.
 
 ---
@@ -81,10 +81,16 @@ glass · floor and bridge lamps · anything outside the size gate.
 
 ## Status
 
-**Run 1 — 27 July 2026.** No publishable candidates. Five listings verified live; three are in
-scope after OV-1 but cannot be scored, because the comp library is empty. eBay's sold-listing
-search sits behind a login wall, so no set of three dated realized sales could be sourced for
-any maker.
+**Run 1 — 27 July 2026.** 14 sources swept, 6 reachable, 44 lots surfaced, 6 verified live.
 
-**The single blocker is comps.** Run 2 leads with comp sourcing — LiveAuctioneers price guides
-and Worthpoint — before any new searching.
+**One scored buy candidate:** a Pairpoint puffy boudoir lamp, Lot 0116 at Americana Auctions in
+Rehoboth, MA, closing **8 August, 11:00 AM EDT**. 14.5" tall with an 8.5" shade, base stamped
+*Pairpoint C3064*, shade perfect, local pickup available.
+
+**Max bid $228.** Realized comps for the form run $645–$1,512 and the house takes a 28%
+premium, so landed cost is roughly hammer × 1.40 + $100. At the current $300 bid it scores 1.24
+(watch); at its own low estimate of $650 it scores 0.64, which is a bad buy. The estimate is
+above what these actually fetch. Register by 6 August if you want the option.
+
+**The comp blocker is solved.** Toomey & Co. and Rago publish realized prices openly with
+dates — they are now the standing comp sources, and comp gathering leads each run.

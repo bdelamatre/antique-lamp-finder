@@ -72,7 +72,7 @@
 
 All four live in the repository and are **committed and pushed every run** (§10).
 
-### `LAMP-GUIDE.md` — persistent expertise
+### `LAMP-GUIDE.html` — persistent expertise
 Read first every run. **Amend, never rewrite.** Contents:
 - **§0 Active overrides** — owner-approved amendments to this spec. This routine prompt lives
   in the scheduler and cannot be edited from inside a run, so approved changes are recorded
@@ -84,7 +84,7 @@ Read first every run. **Amend, never rewrite.** Contents:
 - **Comp library** — realized prices by maker/form/size, with date and source
 - **Lessons learned** · **Changelog**, version bumped every run
 
-### `LAMP-CATALOG.md` — buy candidates, source of record
+### `LAMP-CATALOG.html` — buy candidates, source of record
 Rebuilt every run from live-verified data. Schema in §9.
 
 ### `LAMP-CATALOG.html` — the published view
