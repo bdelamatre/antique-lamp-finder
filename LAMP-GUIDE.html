@@ -243,6 +243,7 @@
       <div class="flag-row new"><span class="n">11</span><p><strong>An estimate range so wide it carries no information</strong> — $100–$10,000, $1–$1,000. The house is declining to value the lot. Treat as unvalued.</p></div>
       <div class="flag-row"><span class="n">12</span><p><strong>Silence in a condition report is a question, not a green light.</strong> Reputable houses disclose restoration.</p></div>
       <div class="flag-row new"><span class="n">13</span><p><strong>Hyper-precise estimates at a multiple of market</strong> — $32,175–$41,827, $13,702–$17,812, $21,307–$27,699. Real estimates are round, because they are judgements. Figures carrying four significant digits have been generated, most likely converted from another currency or produced algorithmically. In run 1 <em>every</em> such estimate came from one of the two houses rated <strong>do not bid</strong> in §4. Treat the pattern as a signal about the seller, not the lot.</p></div>
+      <div class="flag-row new"><span class="n">14</span><p><strong>The same lot offered by two different houses at an estimate matching to the dollar.</strong> In run 2, &ldquo;Pairpoint Tiffany Style Poppy&rdquo; appeared at both Bidhaus and Mynt at $32,175–$41,827; &ldquo;Handel Birds of Paradise&rdquo; at both at $14,781–$19,215; &ldquo;Handel Elephantine Island&rdquo; twice at Mynt under two lot IDs at $13,702–$17,812. Six listings, three objects, every one opening at exactly $100. Two businesses do not independently arrive at the same four-significant-digit number — it is one number copied, which means the estimates are generated rather than judged. A lot that keeps reappearing at $100 is one that never sells: it is cycling to harvest bids, not to transfer goods. <strong>This is the cheapest disqualifier in the list</strong> — it condemns a whole seller at once, from the search results page, without opening a lot. It removed 11 of 37 LiveAuctioneers results in run 2.</p></div>
     </div>
   </section>
 
@@ -261,8 +262,9 @@
         <thead><tr><th scope="col">Channel</th><th scope="col">Reach</th><th scope="col">Rating</th><th scope="col">What it is for</th></tr></thead>
         <tbody>
           <tr><td><a href="https://www.liveauctioneers.com/">LiveAuctioneers</a></td><td class="good">Search + lots</td><td class="rate a">A</td><td><strong>Primary discovery.</strong> Aggregates Americana, Woody, Andrew Jones, Bidhaus, Jackson&rsquo;s, Mynt and more in one query. Use <code>www.</code> for lot pages — the <code>p1.</code> subdomain 403s. Price-guide pages show thumbnails only, not realized prices.</td></tr>
-          <tr><td><a href="https://www.toomeyco.com/">Toomey &amp; Co.</a></td><td class="good">Results</td><td class="rate a">A</td><td><strong>Primary comp source.</strong> Publishes realized prices openly with dates and estimates. Art Nouveau / Art Deco Glass &amp; Lighting sales are directly on-subject.</td></tr>
-          <tr><td><a href="https://www.ragoarts.com/">Rago</a></td><td class="good">Results</td><td class="rate a">A</td><td><strong>Primary comp source.</strong> Same open realized prices. Pair with Toomey.</td></tr>
+          <tr><td><a href="https://www.toomeyco.com/">Toomey &amp; Co.</a></td><td class="bad">403 &mdash; new 2 Aug</td><td class="rate d">&mdash;</td><td><strong>Was the primary comp source; blocked as of run 2.</strong> Lot pages <em>and</em> the site root now 403. Fetched normally on 27 Jul. Realized prices are still reachable through the search index — see the row below. Quality of the data is unchanged and rated A; only the reach failed.</td></tr>
+          <tr><td><a href="https://www.ragoarts.com/">Rago</a></td><td class="bad">403 &mdash; new 2 Aug</td><td class="rate d">&mdash;</td><td><strong>Was the primary comp source; blocked as of run 2.</strong> A 2021 lot and the exact lot that supplied a run-1 comp both 403. Same workaround applies.</td></tr>
+          <tr><td>Search index<br><span class="src">against blocked domains</span></td><td class="good">Indexed text</td><td class="rate b">B</td><td><strong>The comp fallback. Added run 2.</strong> When a comp house refuses a direct fetch, its realized prices are still in the search index: query with <code>allowed_domains: [toomeyco.com, ragoarts.com]</code> plus maker and form. Recovered five dated Handel sales in run 2. <strong>Weaker than fetching</strong> — it returns whatever the index holds rather than the lot asked for, cannot be steered, and returned nothing at all for Pairpoint boudoir or Moe Bridges. Sufficient to keep scoring alive; not sufficient to build a comp set on demand.</td></tr>
           <tr><td><a href="https://www.ebay.com/">eBay</a> — live</td><td class="good">Search + items</td><td class="rate a">A</td><td>Fixed-price and auction. Comma-OR syntax works in <code>_nkw</code> and sweeps a whole tier in one call.</td></tr>
           <tr><td>eBay — sold</td><td class="bad">Login wall</td><td class="rate d">F</td><td><strong>Not a comp source.</strong> <code>LH_Sold=1</code> redirects to sign-in. Do not spend calls here.</td></tr>
           <tr><td><a href="https://woodyauction.com/">Woody Auction</a></td><td class="good">Schedule + terms</td><td class="rate b">B</td><td>Own site fetches. <strong>Fee structure is the point:</strong> 15% direct, 20% + 3.99% via LiveAuctioneers, 0% in person.</td></tr>
@@ -274,7 +276,9 @@
           <tr><td>Ruby Lane</td><td class="bad">503</td><td class="rate d">—</td><td>Unavailable this run. Retry before writing off.</td></tr>
           <tr><td>EBTH · ShopGoodwill</td><td class="bad">JS only</td><td class="rate d">—</td><td>Return navigation shells without listings.</td></tr>
           <tr><td>Thomaston Place</td><td class="bad">403 / conflict</td><td class="rate d">C</td><td>House calendar and aggregators disagree about whether sales exist. Resolve by phone, (207) 354-8141.</td></tr>
-          <tr><td>Facebook · Craigslist · EstateSales.net</td><td>Untested</td><td class="rate d">—</td><td>Local sweep still unrun. Likely login-walled.</td></tr>
+          <tr><td>Craigslist</td><td class="bad">JS shell</td><td class="rate d">&mdash;</td><td><strong>Tested run 2.</strong> City subdomains 301 to <code>craigslist.org/search/area/&lt;city&gt;</code>, which then returns a loading shell with no listings. Not usable by fetch.</td></tr>
+          <tr><td><a href="https://www.estatesales.net/MA">EstateSales.net</a></td><td>Hub only</td><td class="rate d">C</td><td><strong>Tested run 2.</strong> Reachable, but the state page is a city directory rather than listings, and the featured sales it returned were stale by a month. Try a per-city URL before writing it off — it is the only local channel that responded at all.</td></tr>
+          <tr><td>Facebook Marketplace</td><td>Not attempted</td><td class="rate d">&mdash;</td><td>Login-walled by design. Lowest priority of the local three.</td></tr>
         </tbody>
       </table>
     </div>
@@ -528,6 +532,11 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
           <tr><td><a href="https://www.toomeyco.com/auctions/2024/03/art-nouveau-art-deco-glass-lighting/207">with nasturtiums</a></td><td>Toomey</td><td class="when">21 Mar 2024</td><td class="n">$1,500–2,500</td><td class="n"><strong>$693</strong></td></tr>
           <tr><td><a href="https://www.ragoarts.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/172">with roses</a></td><td>Rago</td><td class="when">31 Oct 2024</td><td class="n">$800–1,200</td><td class="n"><strong>$786</strong></td></tr>
           <tr><td><a href="https://www.toomeyco.com/auctions/2024/10/art-nouveau-art-deco-glass-lighting/175">with apple blossoms</a></td><td>Toomey</td><td class="when">31 Oct 2024</td><td class="n">$800–1,200</td><td class="n"><strong>$1,512</strong></td></tr>
+          <tr><td rowspan="3"><strong>Handel</strong><br>reverse-painted<br>table lamp<br><span class="src">added run 2</span></td><td><a href="https://www.toomeyco.com/auctions/2024/10/early-20th-century-design/133">Teroma, mountainous landscape</a></td><td>Toomey</td><td class="when">1 Oct 2024</td><td class="n">$1,500–2,000</td><td class="n"><strong>$2,096</strong></td></tr>
+          <tr><td><a href="https://www.ragoarts.com/auctions/2024/07/art-nouveau-art-deco-glass-lighting/229">Fine Teroma, goldenrod</a></td><td>Rago</td><td class="when">11 Jul 2024</td><td class="n">$5,000–7,000</td><td class="n"><strong>$5,895</strong></td></tr>
+          <tr><td><a href="https://www.ragoarts.com/auctions/2023/11/the-life-collection-of-terry-ralph-kovel/178">Greek Ruins table lamp</a></td><td>Rago</td><td class="when">Nov 2023</td><td class="n">&mdash;</td><td class="n"><strong>$6,930</strong></td></tr>
+          <tr><td><strong>Handel</strong><br>boudoir</td><td><a href="https://www.ragoarts.com/auctions/2021/01/early-20th-century-design/273">Art Deco boudoir lamp, 14.5&Prime; × 7&Prime;</a></td><td>Rago</td><td class="when">21 Jan 2021</td><td class="n">$1,000–1,500</td><td class="n"><strong>$1,875</strong></td></tr>
+          <tr><td><strong>Handel</strong><br>pendant <span class="src">context only</span></td><td><a href="https://www.toomeyco.com/auctions/2024/07/art-nouveau-art-deco-glass-lighting/231">Globe pendant with parrots</a></td><td>Toomey</td><td class="when">11 Jul 2024</td><td class="n">$1,000–1,500</td><td class="n"><strong>$1,008</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -535,9 +544,19 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
       <strong>Pairpoint puffy boudoir: low $645 · high $1,512</strong>, three of four under $800.
       Estimates overshot realized prices in three of four sales, by up to 3&times;.
       <br><br>
-      <strong>Still needed:</strong> Handel boudoir · Handel desk · Pairpoint puffy nautilus ·
-      Daum Nancy boudoir · van Erp and Roycroft copper. Each needs three dated sales before a lot in
-      that form can be scored.
+      <strong>Handel reverse-painted table lamp: low $2,096 · high $6,930</strong>, three usable
+      dated sales — a complete set, added run 2. Note the spread is more than 3&times;: subject and
+      quality matter more than maker here, so lean on the low end.
+      <br><br>
+      <strong>Handel boudoir is still not scoreable.</strong> One realized sale exists ($1,875, Rago,
+      Jan 2021) and it falls outside the three-year window §5 requires. Worth recording that its
+      shade was 7&Prime;, which would itself fail the OV-1 single-lamp gate — Handel boudoir shades
+      may sit systematically below the floor, which is worth watching before chasing the form.
+      <br><br>
+      <strong>Still needed:</strong> Handel boudoir (1 of 3, and stale) · Handel desk ·
+      Pairpoint puffy nautilus · Moe Bridges boudoir (only a 2008 leaded-shade sale at $780 found —
+      wrong form, eighteen years stale) · Daum Nancy boudoir · van Erp and Roycroft copper.
+      Each needs three dated sales within three years before a lot in that form can be scored.
     </p>
   </section>
 
@@ -659,6 +678,64 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
         seller believes the object is worth; when it contradicts the ask, believe the shipping line.
       </p>
     </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L10</span>A solved channel can unsolve itself between runs — re-test the infrastructure, not just the inventory</h3>
+      <p>
+        Run 1&rsquo;s headline achievement was finding Toomey and Rago and declaring the comp blocker
+        solved. Six days later both returned 403 at the domain level, and with them went the ability
+        to value any form not already valued. Three otherwise in-scope lots went unscoreable in run 2
+        purely because of it.
+      </p>
+      <p>
+        The lesson is not &ldquo;find more comp sources&rdquo; — it is that <strong>a channel is a
+        dependency, not an asset</strong>, and a run that assumes last week&rsquo;s reachability will
+        discover the failure only when it needs the data. Re-test the comp sources early in the run,
+        before building anything on them. A blocked comp source is worth escalating on its own, ahead
+        of any lot: it does not cost one candidate, it costs every future candidate in every form
+        that is not already comped.
+      </p>
+      <p>
+        Corollary worth keeping: <strong>realized prices already banked do not expire.</strong> The
+        four Pairpoint comps from run 1 kept the standing candidate scoreable through the outage.
+        Bank comps aggressively while sources are reachable, including for forms not currently being
+        chased — the cost is one search, and the alternative is being unable to value anything the
+        week a source goes dark.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L11</span>A blocked site is often still readable through the search index</h3>
+      <p>
+        Toomey and Rago refuse a direct fetch but their lot pages remain indexed, realized prices and
+        all. Querying the index restricted to those domains recovered five dated Handel sales in run 2
+        — including the only Handel boudoir result on record — after every direct fetch failed.
+      </p>
+      <p>
+        <strong>Know its limits before relying on it.</strong> The index returns what it happens to
+        hold, not the lot asked for; it cannot be pointed at a specific sale; and it returned nothing
+        whatsoever for Pairpoint boudoir or Moe Bridges. It keeps scoring alive for forms the index
+        happens to cover. It does not let a comp set be built to order, so it is a fallback rather
+        than a replacement — and it is worth trying against <em>any</em> 403 in the channel
+        directory, Fontaine&rsquo;s and Invaluable included.
+      </p>
+    </article>
+
+    <article class="lesson">
+      <h3><span class="tag">L12</span>Publishing nothing is the correct output more often than it feels like it should be</h3>
+      <p>
+        Run 2 surfaced 72 lots — more than run 1 — and published zero. The standing candidate had
+        drifted $72 above its own computed ceiling while sitting untouched at $300, which is the
+        ordinary case rather than a strange one: a ceiling computed from realized comps will usually
+        sit below where live bidding opens, because bidders anchor on the house estimate and §5
+        establishes that estimates run high.
+      </p>
+      <p>
+        The discipline that matters is that the ceiling was computed in run 1 and <strong>not
+        recomputed</strong> in run 2 to make the lot qualify. §8 exists precisely because the pressure
+        to produce a candidate is strongest on a run that found nothing.
+      </p>
+    </article>
   </section>
 
   <!-- ============ CHANGELOG ============ -->
@@ -668,6 +745,10 @@ LH_BIN=1 buy-it-now only        _udhi=6500  price ceiling</code></div>
       <table>
         <thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Changes</th></tr></thead>
         <tbody>
+          <tr>
+            <td><strong>v1.4</strong></td><td class="when">2 Aug 2026</td>
+            <td><strong>Run 2.</strong> <span class="flag">Toomey and Rago — both primary comp sources — recorded as newly 403 at the domain level</span>, having fetched normally six days earlier. <strong>Search-index fallback added to the channel directory</strong> as the route to blocked comp houses; it recovered five dated Handel sales. <strong>Comp library extended:</strong> Handel reverse-painted table lamp now has a complete three-sale set (low $2,096 · high $6,930); Handel boudoir has one sale, outside the three-year window, and is still unscoreable. <strong>Red flag 14 added</strong> — the same lot at two houses at an estimate matching to the dollar, which condemns a seller from the results page. Local sweep run for the first time: Craigslist rated JS-shell, EstateSales.net hub-only, Facebook deprioritised. Lessons L10–L12 added. No buy candidate published; the run-1 candidate is bid above its own ceiling.</td>
+          </tr>
           <tr>
             <td><strong>v1.3</strong></td><td class="when">27 Jul 2026</td>
             <td><strong>Section 4 &mdash; Auctioneer diligence &mdash; added.</strong> Eleven houses researched against published reviews, BBB records and complaint boards. <strong>Bidhaus and Mynt Auctions rated do-not-bid</strong> for voiding winning bids, lot substitution, fabricated-bid allegations and a refused authenticity guarantee. Woody, Toomey, Rago and Andrew Jones rated trusted. Americana &mdash; which holds the run-1 scored lot &mdash; rated good with caution over a withdrawn-purchase complaint. Thomaston, Jackson&rsquo;s, Bruneau, Williamson and Louvre flagged, mostly on shipping and condition reporting. Red flag 13 added (hyper-precise estimates). Lessons L8 and L9 added.</td>
